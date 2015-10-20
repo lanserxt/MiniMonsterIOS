@@ -9,23 +9,36 @@
 /* Begin PBXBuildFile section */
 		332C81431BD683A900C53AA4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 332C81421BD683A900C53AA4 /* main.m */; };
 		332C81461BD683A900C53AA4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 332C81451BD683A900C53AA4 /* AppDelegate.m */; };
-		332C81491BD683A900C53AA4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 332C81481BD683A900C53AA4 /* ViewController.m */; };
 		332C814C1BD683A900C53AA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 332C814A1BD683A900C53AA4 /* Main.storyboard */; };
 		332C814E1BD683A900C53AA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 332C814D1BD683A900C53AA4 /* Assets.xcassets */; };
 		332C81511BD683A900C53AA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 332C814F1BD683A900C53AA4 /* LaunchScreen.storyboard */; };
+		332C815C1BD6856E00C53AA4 /* MMPBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 332C815B1BD6856E00C53AA4 /* MMPBaseViewController.m */; settings = {ASSET_TAGS = (); }; };
+		332C81611BD685BC00C53AA4 /* MMPInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 332C81601BD685BC00C53AA4 /* MMPInfoViewController.m */; settings = {ASSET_TAGS = (); }; };
+		332C81651BD685D300C53AA4 /* MMPDevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 332C81641BD685D300C53AA4 /* MMPDevicesViewController.m */; settings = {ASSET_TAGS = (); }; };
+		332C816B1BD6866B00C53AA4 /* MMPObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 332C816A1BD6866B00C53AA4 /* MMPObjectFactory.m */; settings = {ASSET_TAGS = (); }; };
+		48DEA5E10D6D7A4DFA3C7676 /* libPods-MiniMonsterIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C1BDA786BDC836F0EF843C9 /* libPods-MiniMonsterIOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26A90E67B30CD5719C719400 /* Pods-MiniMonsterIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniMonsterIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiniMonsterIOS/Pods-MiniMonsterIOS.release.xcconfig"; sourceTree = "<group>"; };
 		332C813E1BD683A900C53AA4 /* MiniMonsterIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniMonsterIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		332C81421BD683A900C53AA4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		332C81441BD683A900C53AA4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		332C81451BD683A900C53AA4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		332C81471BD683A900C53AA4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		332C81481BD683A900C53AA4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		332C814B1BD683A900C53AA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		332C814D1BD683A900C53AA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		332C81501BD683A900C53AA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		332C81521BD683A900C53AA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		332C815A1BD6856E00C53AA4 /* MMPBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPBaseViewController.h; path = Controllers/MMPBaseViewController.h; sourceTree = "<group>"; };
+		332C815B1BD6856E00C53AA4 /* MMPBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPBaseViewController.m; path = Controllers/MMPBaseViewController.m; sourceTree = "<group>"; };
+		332C815F1BD685BC00C53AA4 /* MMPInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPInfoViewController.h; path = Controllers/MMPInfoViewController.h; sourceTree = "<group>"; };
+		332C81601BD685BC00C53AA4 /* MMPInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPInfoViewController.m; path = Controllers/MMPInfoViewController.m; sourceTree = "<group>"; };
+		332C81631BD685D300C53AA4 /* MMPDevicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPDevicesViewController.h; path = Controllers/MMPDevicesViewController.h; sourceTree = "<group>"; };
+		332C81641BD685D300C53AA4 /* MMPDevicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPDevicesViewController.m; path = Controllers/MMPDevicesViewController.m; sourceTree = "<group>"; };
+		332C81691BD6866B00C53AA4 /* MMPObjectFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPObjectFactory.h; path = Utilities/MMPObjectFactory.h; sourceTree = "<group>"; };
+		332C816A1BD6866B00C53AA4 /* MMPObjectFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPObjectFactory.m; path = Utilities/MMPObjectFactory.m; sourceTree = "<group>"; };
+		6B285989B0AC342C5DCEC1FB /* Pods-MiniMonsterIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniMonsterIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniMonsterIOS/Pods-MiniMonsterIOS.debug.xcconfig"; sourceTree = "<group>"; };
+		8C1BDA786BDC836F0EF843C9 /* libPods-MiniMonsterIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiniMonsterIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48DEA5E10D6D7A4DFA3C7676 /* libPods-MiniMonsterIOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +58,8 @@
 			children = (
 				332C81401BD683A900C53AA4 /* MiniMonsterIOS */,
 				332C813F1BD683A900C53AA4 /* Products */,
+				DFC296C5319B0B9E58C10882 /* Pods */,
+				DCF7E4CB37C74C9EE0B438A0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,11 +76,11 @@
 			children = (
 				332C81441BD683A900C53AA4 /* AppDelegate.h */,
 				332C81451BD683A900C53AA4 /* AppDelegate.m */,
-				332C81471BD683A900C53AA4 /* ViewController.h */,
-				332C81481BD683A900C53AA4 /* ViewController.m */,
-				332C814A1BD683A900C53AA4 /* Main.storyboard */,
+				332C81671BD6861F00C53AA4 /* Model */,
+				332C81581BD684BB00C53AA4 /* Controllers */,
+				332C81681BD6863600C53AA4 /* ObjectFactory */,
+				332C81591BD684C900C53AA4 /* Views */,
 				332C814D1BD683A900C53AA4 /* Assets.xcassets */,
-				332C814F1BD683A900C53AA4 /* LaunchScreen.storyboard */,
 				332C81521BD683A900C53AA4 /* Info.plist */,
 				332C81411BD683A900C53AA4 /* Supporting Files */,
 			);
@@ -79,6 +95,69 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		332C81581BD684BB00C53AA4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				332C815D1BD6857600C53AA4 /* Base */,
+				332C815F1BD685BC00C53AA4 /* MMPInfoViewController.h */,
+				332C81601BD685BC00C53AA4 /* MMPInfoViewController.m */,
+				332C81631BD685D300C53AA4 /* MMPDevicesViewController.h */,
+				332C81641BD685D300C53AA4 /* MMPDevicesViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		332C81591BD684C900C53AA4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				332C814A1BD683A900C53AA4 /* Main.storyboard */,
+				332C814F1BD683A900C53AA4 /* LaunchScreen.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		332C815D1BD6857600C53AA4 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				332C815A1BD6856E00C53AA4 /* MMPBaseViewController.h */,
+				332C815B1BD6856E00C53AA4 /* MMPBaseViewController.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		332C81671BD6861F00C53AA4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		332C81681BD6863600C53AA4 /* ObjectFactory */ = {
+			isa = PBXGroup;
+			children = (
+				332C81691BD6866B00C53AA4 /* MMPObjectFactory.h */,
+				332C816A1BD6866B00C53AA4 /* MMPObjectFactory.m */,
+			);
+			name = ObjectFactory;
+			sourceTree = "<group>";
+		};
+		DCF7E4CB37C74C9EE0B438A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C1BDA786BDC836F0EF843C9 /* libPods-MiniMonsterIOS.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DFC296C5319B0B9E58C10882 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6B285989B0AC342C5DCEC1FB /* Pods-MiniMonsterIOS.debug.xcconfig */,
+				26A90E67B30CD5719C719400 /* Pods-MiniMonsterIOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +165,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 332C81551BD683A900C53AA4 /* Build configuration list for PBXNativeTarget "MiniMonsterIOS" */;
 			buildPhases = (
+				432843562FDB52672E60CD3A /* Check Pods Manifest.lock */,
 				332C813A1BD683A900C53AA4 /* Sources */,
 				332C813B1BD683A900C53AA4 /* Frameworks */,
 				332C813C1BD683A900C53AA4 /* Resources */,
+				BBD3113077C6DDB1C08FF284 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -144,14 +225,50 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		432843562FDB52672E60CD3A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BBD3113077C6DDB1C08FF284 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MiniMonsterIOS/Pods-MiniMonsterIOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		332C813A1BD683A900C53AA4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				332C81491BD683A900C53AA4 /* ViewController.m in Sources */,
 				332C81461BD683A900C53AA4 /* AppDelegate.m in Sources */,
+				332C81651BD685D300C53AA4 /* MMPDevicesViewController.m in Sources */,
 				332C81431BD683A900C53AA4 /* main.m in Sources */,
+				332C815C1BD6856E00C53AA4 /* MMPBaseViewController.m in Sources */,
+				332C816B1BD6866B00C53AA4 /* MMPObjectFactory.m in Sources */,
+				332C81611BD685BC00C53AA4 /* MMPInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,22 +378,26 @@
 		};
 		332C81561BD683A900C53AA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B285989B0AC342C5DCEC1FB /* Pods-MiniMonsterIOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MiniMonsterIOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.minimonster..MiniMonsterIOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.minimonster.MiniMonsterIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		332C81571BD683A900C53AA4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26A90E67B30CD5719C719400 /* Pods-MiniMonsterIOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MiniMonsterIOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.minimonster..MiniMonsterIOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.minimonster.MiniMonsterIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -300,6 +421,7 @@
 				332C81571BD683A900C53AA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
