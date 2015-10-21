@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MMPBaseViewController.h"
 
 @interface MMPObjectFactory : NSObject
+
++ (MMPObjectFactory *) sharedFactory;
+
++ (MMPBaseViewController*) infoVC;
 
 @end

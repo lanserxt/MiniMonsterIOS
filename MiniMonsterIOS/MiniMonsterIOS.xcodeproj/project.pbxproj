@@ -16,6 +16,7 @@
 		332C81611BD685BC00C53AA4 /* MMPInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 332C81601BD685BC00C53AA4 /* MMPInfoViewController.m */; settings = {ASSET_TAGS = (); }; };
 		332C81651BD685D300C53AA4 /* MMPDevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 332C81641BD685D300C53AA4 /* MMPDevicesViewController.m */; settings = {ASSET_TAGS = (); }; };
 		332C816B1BD6866B00C53AA4 /* MMPObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 332C816A1BD6866B00C53AA4 /* MMPObjectFactory.m */; settings = {ASSET_TAGS = (); }; };
+		335F0C4A1BD7DD020051E98D /* Devices.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 335F0C481BD7DD020051E98D /* Devices.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
 		48DEA5E10D6D7A4DFA3C7676 /* libPods-MiniMonsterIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C1BDA786BDC836F0EF843C9 /* libPods-MiniMonsterIOS.a */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,8 @@
 		332C81641BD685D300C53AA4 /* MMPDevicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPDevicesViewController.m; path = Controllers/MMPDevicesViewController.m; sourceTree = "<group>"; };
 		332C81691BD6866B00C53AA4 /* MMPObjectFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPObjectFactory.h; path = Utilities/MMPObjectFactory.h; sourceTree = "<group>"; };
 		332C816A1BD6866B00C53AA4 /* MMPObjectFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPObjectFactory.m; path = Utilities/MMPObjectFactory.m; sourceTree = "<group>"; };
+		335F0C471BD7DC2E0051E98D /* MMPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPConstants.h; path = Utilities/MMPConstants.h; sourceTree = "<group>"; };
+		335F0C491BD7DD020051E98D /* Devices.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Devices.xcdatamodel; sourceTree = "<group>"; };
 		6B285989B0AC342C5DCEC1FB /* Pods-MiniMonsterIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniMonsterIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniMonsterIOS/Pods-MiniMonsterIOS.debug.xcconfig"; sourceTree = "<group>"; };
 		8C1BDA786BDC836F0EF843C9 /* libPods-MiniMonsterIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiniMonsterIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -76,6 +79,7 @@
 			children = (
 				332C81441BD683A900C53AA4 /* AppDelegate.h */,
 				332C81451BD683A900C53AA4 /* AppDelegate.m */,
+				335F0C471BD7DC2E0051E98D /* MMPConstants.h */,
 				332C81671BD6861F00C53AA4 /* Model */,
 				332C81581BD684BB00C53AA4 /* Controllers */,
 				332C81681BD6863600C53AA4 /* ObjectFactory */,
@@ -128,6 +132,7 @@
 		332C81671BD6861F00C53AA4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				335F0C481BD7DD020051E98D /* Devices.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -266,6 +271,7 @@
 				332C81461BD683A900C53AA4 /* AppDelegate.m in Sources */,
 				332C81651BD685D300C53AA4 /* MMPDevicesViewController.m in Sources */,
 				332C81431BD683A900C53AA4 /* main.m in Sources */,
+				335F0C4A1BD7DD020051E98D /* Devices.xcdatamodeld in Sources */,
 				332C815C1BD6856E00C53AA4 /* MMPBaseViewController.m in Sources */,
 				332C816B1BD6866B00C53AA4 /* MMPObjectFactory.m in Sources */,
 				332C81611BD685BC00C53AA4 /* MMPInfoViewController.m in Sources */,
@@ -424,6 +430,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		335F0C481BD7DD020051E98D /* Devices.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				335F0C491BD7DD020051E98D /* Devices.xcdatamodel */,
+			);
+			currentVersion = 335F0C491BD7DD020051E98D /* Devices.xcdatamodel */;
+			name = Devices.xcdatamodeld;
+			path = DB/Devices.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 332C81361BD683A900C53AA4 /* Project object */;
 }
