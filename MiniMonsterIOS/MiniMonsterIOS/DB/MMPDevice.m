@@ -1,14 +1,14 @@
 //
-//  MMPControl.m
+//  MMPDevice.m
 //  
 //
 //  Created by Anton Gubarenko on 22.10.15.
 //
 //
 
-#import "MMPControl.h"
+#import "MMPDevice.h"
 
-@implementation MMPControl
+@implementation MMPDevice
 
 // Insert code here to add functionality to your managed object subclass
 

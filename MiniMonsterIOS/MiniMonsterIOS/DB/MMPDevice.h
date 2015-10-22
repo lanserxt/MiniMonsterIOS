@@ -1,5 +1,5 @@
 //
-//  MMPControl.h
+//  MMPDevice.h
 //  
 //
 //  Created by Anton Gubarenko on 22.10.15.
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MMPControl : NSManagedObject
+@interface MMPDevice : NSManagedObject
 
 // Insert code here to declare functionality of your managed object subclass
 
@@ -19,4 +19,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-#import "MMPControl+CoreDataProperties.h"
+#import "MMPDevice+CoreDataProperties.h"

@@ -1,5 +1,5 @@
 //
-//  MMPControl+CoreDataProperties.m
+//  MMPDevice+CoreDataProperties.m
 //  
 //
 //  Created by Anton Gubarenko on 22.10.15.
@@ -9,17 +9,13 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "MMPControl+CoreDataProperties.h"
+#import "MMPDevice+CoreDataProperties.h"
 
-@implementation MMPControl (CoreDataProperties)
+@implementation MMPDevice (CoreDataProperties)
 
-@dynamic controlId;
-@dynamic data;
 @dynamic deviceId;
-@dynamic type;
-@dynamic icon;
-@dynamic interval;
-@dynamic maxValue;
-@dynamic request;
+@dynamic address;
+@dynamic port;
+@dynamic localName;
 
 @end
