@@ -8,16 +8,17 @@
 
 #import "MMPTextFieldTableViewCell.h"
 
+NSString* const kMMPTextFieldTableViewCellIdentifier = @"MMPTextFieldTableViewCell";
+const CGFloat kMMPTextFieldTableViewCellHeight = 77.0f;
+
 @implementation MMPTextFieldTableViewCell
 
-- (void)awakeFromNib {
-    // Initialization code
-}
+#pragma mark - UITextField Delegate
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (BOOL) textFieldShouldReturn: (UITextField *) textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

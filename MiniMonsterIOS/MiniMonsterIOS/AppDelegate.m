@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import <MagicalRecord.h>
+
+static NSString* const kStoreModel = @"Devices.momd";
 
 @interface AppDelegate ()
 
@@ -17,7 +20,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self setupDB];
     return YES;
+}
+
+- (void)setupDB
+{
+    [MagicalRecord setLoggingLevel: MagicalRecordLoggingLevelVerbose];
+    [MagicalRecord setDefaultModelNamed: kStoreModel];
+    [MagicalRecord setupAutoMigratingCoreDataStack];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -40,6 +51,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [MagicalRecord cleanUp];
 }
 
 @end

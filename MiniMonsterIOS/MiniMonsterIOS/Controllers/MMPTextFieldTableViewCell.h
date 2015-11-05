@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MMPTextFieldTableViewCell : UITableViewCell
+extern NSString* const kMMPTextFieldTableViewCellIdentifier;
+extern const CGFloat kMMPTextFieldTableViewCellHeight;
+
+@interface MMPTextFieldTableViewCell : UITableViewCell <UITextFieldDelegate>
+
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UITextField *textField;
 
 @end

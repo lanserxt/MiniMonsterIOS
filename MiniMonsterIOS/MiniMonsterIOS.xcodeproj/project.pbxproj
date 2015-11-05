@@ -16,11 +16,14 @@
 		332C81611BD685BC00C53AA4 /* MMPInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 332C81601BD685BC00C53AA4 /* MMPInfoViewController.m */; };
 		332C81651BD685D300C53AA4 /* MMPDevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 332C81641BD685D300C53AA4 /* MMPDevicesViewController.m */; };
 		332C816B1BD6866B00C53AA4 /* MMPObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 332C816A1BD6866B00C53AA4 /* MMPObjectFactory.m */; };
+		33341BB51BE8D91400B860C5 /* MMPAddDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33341BB41BE8D91400B860C5 /* MMPAddDeviceViewController.m */; };
 		335F0C4A1BD7DD020051E98D /* Devices.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 335F0C481BD7DD020051E98D /* Devices.xcdatamodeld */; };
 		337977B41BD93432007EB8E3 /* MMPDevice+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 337977AD1BD93432007EB8E3 /* MMPDevice+CoreDataProperties.m */; };
 		337977B51BD93432007EB8E3 /* MMPDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 337977AF1BD93432007EB8E3 /* MMPDevice.m */; };
 		337977B61BD93432007EB8E3 /* MMPControl+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 337977B11BD93432007EB8E3 /* MMPControl+CoreDataProperties.m */; };
 		337977B71BD93432007EB8E3 /* MMPControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 337977B31BD93432007EB8E3 /* MMPControl.m */; };
+		33A1798E1BE8E65700E0F40D /* MMPTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A1798D1BE8E65700E0F40D /* MMPTextFieldTableViewCell.m */; };
+		33D8FCD31BEB4B1800D68EC9 /* MMPButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D8FCD21BEB4B1800D68EC9 /* MMPButtonTableViewCell.m */; };
 		48DEA5E10D6D7A4DFA3C7676 /* libPods-MiniMonsterIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C1BDA786BDC836F0EF843C9 /* libPods-MiniMonsterIOS.a */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +45,8 @@
 		332C81641BD685D300C53AA4 /* MMPDevicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPDevicesViewController.m; path = Controllers/MMPDevicesViewController.m; sourceTree = "<group>"; };
 		332C81691BD6866B00C53AA4 /* MMPObjectFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPObjectFactory.h; path = Utilities/MMPObjectFactory.h; sourceTree = "<group>"; };
 		332C816A1BD6866B00C53AA4 /* MMPObjectFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPObjectFactory.m; path = Utilities/MMPObjectFactory.m; sourceTree = "<group>"; };
+		33341BB31BE8D91400B860C5 /* MMPAddDeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPAddDeviceViewController.h; path = Controllers/MMPAddDeviceViewController.h; sourceTree = "<group>"; };
+		33341BB41BE8D91400B860C5 /* MMPAddDeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPAddDeviceViewController.m; path = Controllers/MMPAddDeviceViewController.m; sourceTree = "<group>"; };
 		335F0C471BD7DC2E0051E98D /* MMPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPConstants.h; path = Utilities/MMPConstants.h; sourceTree = "<group>"; };
 		335F0C491BD7DD020051E98D /* Devices.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Devices.xcdatamodel; sourceTree = "<group>"; };
 		337977AC1BD93432007EB8E3 /* MMPDevice+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MMPDevice+CoreDataProperties.h"; path = "DB/MMPDevice+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -52,6 +57,10 @@
 		337977B11BD93432007EB8E3 /* MMPControl+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MMPControl+CoreDataProperties.m"; path = "DB/MMPControl+CoreDataProperties.m"; sourceTree = "<group>"; };
 		337977B21BD93432007EB8E3 /* MMPControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPControl.h; path = DB/MMPControl.h; sourceTree = "<group>"; };
 		337977B31BD93432007EB8E3 /* MMPControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPControl.m; path = DB/MMPControl.m; sourceTree = "<group>"; };
+		33A1798C1BE8E65700E0F40D /* MMPTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPTextFieldTableViewCell.h; path = Controllers/MMPTextFieldTableViewCell.h; sourceTree = "<group>"; };
+		33A1798D1BE8E65700E0F40D /* MMPTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPTextFieldTableViewCell.m; path = Controllers/MMPTextFieldTableViewCell.m; sourceTree = "<group>"; };
+		33D8FCD11BEB4B1800D68EC9 /* MMPButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPButtonTableViewCell.h; path = Controllers/MMPButtonTableViewCell.h; sourceTree = "<group>"; };
+		33D8FCD21BEB4B1800D68EC9 /* MMPButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPButtonTableViewCell.m; path = Controllers/MMPButtonTableViewCell.m; sourceTree = "<group>"; };
 		6B285989B0AC342C5DCEC1FB /* Pods-MiniMonsterIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniMonsterIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniMonsterIOS/Pods-MiniMonsterIOS.debug.xcconfig"; sourceTree = "<group>"; };
 		8C1BDA786BDC836F0EF843C9 /* libPods-MiniMonsterIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiniMonsterIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -119,6 +128,7 @@
 				332C81601BD685BC00C53AA4 /* MMPInfoViewController.m */,
 				332C81631BD685D300C53AA4 /* MMPDevicesViewController.h */,
 				332C81641BD685D300C53AA4 /* MMPDevicesViewController.m */,
+				33341BB21BE8D88000B860C5 /* Add Device */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -164,6 +174,27 @@
 				332C816A1BD6866B00C53AA4 /* MMPObjectFactory.m */,
 			);
 			name = ObjectFactory;
+			sourceTree = "<group>";
+		};
+		33341BB21BE8D88000B860C5 /* Add Device */ = {
+			isa = PBXGroup;
+			children = (
+				33341BB31BE8D91400B860C5 /* MMPAddDeviceViewController.h */,
+				33341BB41BE8D91400B860C5 /* MMPAddDeviceViewController.m */,
+				33D8FCD41BEBA7D200D68EC9 /* Cells */,
+			);
+			name = "Add Device";
+			sourceTree = "<group>";
+		};
+		33D8FCD41BEBA7D200D68EC9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				33A1798C1BE8E65700E0F40D /* MMPTextFieldTableViewCell.h */,
+				33A1798D1BE8E65700E0F40D /* MMPTextFieldTableViewCell.m */,
+				33D8FCD11BEB4B1800D68EC9 /* MMPButtonTableViewCell.h */,
+				33D8FCD21BEB4B1800D68EC9 /* MMPButtonTableViewCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		DCF7E4CB37C74C9EE0B438A0 /* Frameworks */ = {
@@ -288,10 +319,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33A1798E1BE8E65700E0F40D /* MMPTextFieldTableViewCell.m in Sources */,
 				337977B71BD93432007EB8E3 /* MMPControl.m in Sources */,
+				33341BB51BE8D91400B860C5 /* MMPAddDeviceViewController.m in Sources */,
 				332C81461BD683A900C53AA4 /* AppDelegate.m in Sources */,
 				332C81651BD685D300C53AA4 /* MMPDevicesViewController.m in Sources */,
 				337977B51BD93432007EB8E3 /* MMPDevice.m in Sources */,
+				33D8FCD31BEB4B1800D68EC9 /* MMPButtonTableViewCell.m in Sources */,
 				332C81431BD683A900C53AA4 /* main.m in Sources */,
 				337977B61BD93432007EB8E3 /* MMPControl+CoreDataProperties.m in Sources */,
 				335F0C4A1BD7DD020051E98D /* Devices.xcdatamodeld in Sources */,
@@ -416,6 +450,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.minimonster.MiniMonsterIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -429,6 +464,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.minimonster.MiniMonsterIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

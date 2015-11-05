@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *address;
 @property (nullable, nonatomic, retain) NSString *port;
 @property (nullable, nonatomic, retain) NSString *localName;
+@property (nullable, nonatomic, retain) NSString *password;
+@property (nullable, nonatomic, retain) NSDate *added;
 
 @end
 

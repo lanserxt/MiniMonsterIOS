@@ -17,5 +17,7 @@
 @dynamic address;
 @dynamic port;
 @dynamic localName;
+@dynamic password;
+@dynamic added;
 
 @end

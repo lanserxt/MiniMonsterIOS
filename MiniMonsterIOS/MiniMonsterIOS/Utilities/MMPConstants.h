@@ -7,3 +7,11 @@
 //
 
 #define kMainStoryboard "Main";
+#define kHost @"host"
+#define kPort @"port"
+#define kPassword @"password"
+#define kName @"name"
+
+
+#define kId @"id"
+#define kFirmware @"fwv"

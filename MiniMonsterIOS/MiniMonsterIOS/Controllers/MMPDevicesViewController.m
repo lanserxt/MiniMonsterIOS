@@ -7,31 +7,53 @@
 //
 
 #import "MMPDevicesViewController.h"
+#import <MagicalRecord.h>
+#import "MMPDevice+CoreDataProperties.h"
 
-@interface MMPDevicesViewController ()
-
+@interface MMPDevicesViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *noDevicesLabel;
+@property (nonatomic) NSMutableArray *devices;
 @end
 
 @implementation MMPDevicesViewController
 
-- (void)viewDidLoad {
+#pragma mark - View Lyfe Cycle
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    _devices = [NSMutableArray arrayWithCapacity: 0];
+    self.title = @"Devices";
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) viewWillAppear: (BOOL) animated
+{
+    [super viewWillAppear: animated];
+    [self loadDevices];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) loadDevices
+{
+    _devices = [[MMPDevice MR_findAllSortedBy: @"added"
+                                    ascending: YES] mutableCopy];
 }
-*/
+
+#pragma mark - TableView Data Source
+
+- (NSInteger) tableView: (UITableView *) tableView
+  numberOfRowsInSection: (NSInteger) section
+{
+    [_noDevicesLabel setHidden: _devices.count > 0 ? YES : NO];
+    return [_devices count];
+}
+
+- (UITableViewCell*) tableView: (UITableView *) tableView
+         cellForRowAtIndexPath: (NSIndexPath *) indexPath
+{
+    return nil;
+}
+
+#pragma mark - Actions
+
 
 @end

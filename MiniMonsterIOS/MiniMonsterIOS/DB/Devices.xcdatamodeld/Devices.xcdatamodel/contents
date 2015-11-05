@@ -11,13 +11,15 @@
         <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="MMPDevice" representedClassName="MMPDevice" syncable="YES">
+        <attribute name="added" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="deviceId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="localName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="port" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="MMPControl" positionX="-54" positionY="-9" width="128" height="165"/>
-        <element name="MMPDevice" positionX="241" positionY="-90" width="128" height="105"/>
+        <element name="MMPDevice" positionX="241" positionY="-90" width="128" height="135"/>
     </elements>
 </model>

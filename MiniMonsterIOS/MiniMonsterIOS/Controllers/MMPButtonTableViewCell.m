@@ -8,16 +8,20 @@
 
 #import "MMPButtonTableViewCell.h"
 
+NSString* const kMMPButtonTableViewCellIdentifier = @"MMPButtonTableViewCell";
+const CGFloat kMMPButtonTableViewCellHeight = 77.0f;
+
 @implementation MMPButtonTableViewCell
 
-- (void)awakeFromNib {
-    // Initialization code
-}
+#pragma mark - Actions
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (IBAction)buttonAction: (id) sender
+{
+    if (self.delegate && [self.delegate respondsToSelector: @selector(buttonPressed:forCell:)])
+    {
+        [self.delegate buttonPressed: sender
+                             forCell: self];
+    }
 }
 
 @end
