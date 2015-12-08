@@ -6,8 +6,19 @@
 //  Copyright © 2015 Anton Gubarenko. All rights reserved.
 //
 
-#ifndef MMPSwitchDelegate_h
-#define MMPSwitchDelegate_h
+#import <UIKit/UIKit.h>
+#import "MMPSliderTableViewCell.h"
 
+@protocol MMPSwitchDelegate
 
-#endif /* MMPSwitchDelegate_h */
+- (void) switchPressedForCell: (MMPDataTableViewCell*) cell
+                    withValue: (BOOL) isOn
+                      atIndex: (NSInteger) index;
+
+- (void) resetPressedForCell: (MMPDataTableViewCell *) cell
+                     atIndex: (NSInteger) index;
+
+- (void) nameChangedForCell: (MMPDataTableViewCell*) cell
+                    withValue: (NSString*) name
+                      atIndex: (NSInteger) index;
+@end

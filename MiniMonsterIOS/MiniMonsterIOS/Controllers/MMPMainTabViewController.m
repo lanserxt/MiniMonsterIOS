@@ -7,6 +7,8 @@
 //
 
 #import "MMPMainTabViewController.h"
+#import "MMPSet+CoreDataProperties.h"
+#import <MagicalRecord.h>
 
 @interface MMPMainTabViewController ()
 
@@ -14,24 +16,21 @@
 
 @implementation MMPMainTabViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+#pragma mark - View Lyfecycle
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
+    
+    [self loadAvailableTab];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) loadAvailableTab
+{
+    if ([MMPSet MR_countOfEntities] == 0)
+    {
+        [self setSelectedIndex: 1];
+    }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

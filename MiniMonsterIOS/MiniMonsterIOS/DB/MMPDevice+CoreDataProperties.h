@@ -16,11 +16,18 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MMPDevice (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *deviceId;
-@property (nullable, nonatomic, retain) NSString *address;
+@property (nullable, nonatomic, retain) NSString *host;
 @property (nullable, nonatomic, retain) NSString *port;
 @property (nullable, nonatomic, retain) NSString *localName;
 @property (nullable, nonatomic, retain) NSString *password;
-@property (nullable, nonatomic, retain) NSDate *added;
+@property (nullable, nonatomic, retain) NSDate *addedDate;
+@property (nullable, nonatomic, retain) NSData *thumb;
+@property (nullable, nonatomic, retain) NSData *deviceData;
+@property (nullable, nonatomic, retain) NSNumber *updateInterval;
+@property (nullable, nonatomic, retain) NSNumber *isOnline;
+
+- (nullable NSString*) deviceName;
+- (nullable NSString*) firmware;
 
 @end
 

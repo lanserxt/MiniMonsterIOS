@@ -9,7 +9,7 @@
 #import "MMPButtonTableViewCell.h"
 
 NSString* const kMMPButtonTableViewCellIdentifier = @"MMPButtonTableViewCell";
-const CGFloat kMMPButtonTableViewCellHeight = 77.0f;
+const CGFloat kMMPButtonTableViewCellHeight = 80.0f;
 
 @implementation MMPButtonTableViewCell
 

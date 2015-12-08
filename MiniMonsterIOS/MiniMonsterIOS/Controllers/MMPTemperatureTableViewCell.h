@@ -6,8 +6,14 @@
 //  Copyright © 2015 Anton Gubarenko. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "MMPDataTableViewCell.h"
 
-@interface MMPTemperatureTableViewCell : UITableViewCell
+extern NSString* const kMMPTemperatureTableViewCellIdentifier;
+extern const CGFloat kMMPTemperatureTableViewCellHeight;
+
+@interface MMPTemperatureTableViewCell : MMPDataTableViewCell
+
+@property (nonatomic, weak) IBOutlet UILabel *portNameLabel;
+@property (nonatomic, weak) IBOutlet UILabel *tempLabel;
 
 @end

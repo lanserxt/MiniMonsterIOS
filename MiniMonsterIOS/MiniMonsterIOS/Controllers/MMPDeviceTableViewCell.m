@@ -7,17 +7,23 @@
 //
 
 #import "MMPDeviceTableViewCell.h"
+#import "MMPDevice+CoreDataProperties.h"
+
+NSString* const kMMPDeviceTableViewCellIdentifier = @"MMPDeviceTableViewCell";
+const CGFloat kMMPDeviceTableViewCellHeight = 150.0f;
 
 @implementation MMPDeviceTableViewCell
 
-- (void)awakeFromNib {
-    // Initialization code
+- (void)awakeFromNib
+{
+    [self.statusCircle.layer setCornerRadius: CGRectGetWidth(self.statusCircle.bounds) / 2.0];    
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+#pragma mark - Methods
 
-    // Configure the view for the selected state
+- (void) setDataForDevice: (MMPDevice*) device
+{
+    [self.firmLabel setText: [device firmware]];
 }
 
 @end

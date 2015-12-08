@@ -14,13 +14,13 @@
 #import "MMPButtonTableViewCell.h"
 #import "MMPConstants.h"
 #import <SVProgressHUD.h>
+#import "MMPControl+CoreDataProperties.h"
 
 typedef NS_ENUM(NSInteger, MMPDeviceCell)
 {
     MMPDeviceCellHost = 0,
     MMPDeviceCellPort,
     MMPDeviceCellPassword,
-    MMPDeviceCellName,
     MMPDeviceCellValidate,
     MMPDeviceCellCount
 };
@@ -32,13 +32,24 @@ typedef NS_ENUM(NSInteger, MMPDeviceInfoCell)
     MMPDeviceInfoCellCount
 };
 
-@interface MMPAddDeviceViewController () <UITableViewDataSource, UITableViewDelegate, MMPButtonDelegate>
+@interface MMPAddDeviceViewController () <UITableViewDataSource, UITableViewDelegate, MMPButtonDelegate, MMPTextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) BOOL isValidatedDevice;
 @property (nonatomic) NSDictionary *deviceData;
 @end
 
 @implementation MMPAddDeviceViewController
+
+#pragma mark - Class
+
++ (instancetype) classObject
+{
+    UIStoryboard *sb = [UIStoryboard storyboardWithName: kMainStoryboard
+                                                 bundle: nil];
+    MMPAddDeviceViewController *vc = (MMPAddDeviceViewController *)[sb instantiateViewControllerWithIdentifier: NSStringFromClass([self class])];
+    return vc;
+}
+
 
 #pragma mark - View Lyfecycle
 
@@ -91,6 +102,7 @@ titleForHeaderInSection: (NSInteger) section
                 [tfCell.titleLabel setText: @"Host"];
                 [tfCell.textField setPlaceholder: @"http://192.168.0.1"];
                 [tfCell.textField setText: @"http://fasterpast.ru"];
+                [tfCell setDelegate: self];
                 cell = tfCell;
                 break;
             }
@@ -101,6 +113,7 @@ titleForHeaderInSection: (NSInteger) section
                 [tfCell.titleLabel setText: @"Port"];
                 [tfCell.textField setPlaceholder: @"80"];
                 [tfCell.textField setText: @"9898"];
+                [tfCell setDelegate: self];
                 cell = tfCell;
                 break;
             }
@@ -112,16 +125,7 @@ titleForHeaderInSection: (NSInteger) section
                 [tfCell.textField setPlaceholder: @"secret"];
                 [tfCell.textField setSecureTextEntry: YES];
                 [tfCell.textField setText: @"password"];
-                cell = tfCell;
-                break;
-            }
-            case MMPDeviceCellName:
-            {
-                MMPTextFieldTableViewCell *tfCell = [tableView dequeueReusableCellWithIdentifier: kMMPTextFieldTableViewCellIdentifier
-                                                                                    forIndexPath: indexPath];
-                [tfCell.titleLabel setText: @"Device name"];
-                [tfCell.textField setPlaceholder: @"Living room Monster"];
-                [tfCell.textField setText: @"Demo device"];
+                [tfCell setDelegate: self];
                 cell = tfCell;
                 break;
             }
@@ -146,7 +150,7 @@ titleForHeaderInSection: (NSInteger) section
             case MMPDeviceInfoCellId:
             {
                 MMPTextFieldTableViewCell *tfCell = [tableView dequeueReusableCellWithIdentifier: kMMPTextFieldTableViewCellIdentifier
-                                                                                 forIndexPath: indexPath];
+                                                                                    forIndexPath: indexPath];
                 [tfCell.titleLabel setText: @"ID"];
                 [tfCell.textField setText: _deviceData[kId]];
                 [tfCell.textField setUserInteractionEnabled: NO];
@@ -157,7 +161,7 @@ titleForHeaderInSection: (NSInteger) section
             case MMPDeviceInfoCellFirmware:
             {
                 MMPTextFieldTableViewCell *tfCell = [tableView dequeueReusableCellWithIdentifier: kMMPTextFieldTableViewCellIdentifier
-                                                                                 forIndexPath: indexPath];
+                                                                                    forIndexPath: indexPath];
                 [tfCell.titleLabel setText: @"Firmware"];
                 [tfCell.textField setText: _deviceData[kFirmware]];
                 [tfCell.textField setUserInteractionEnabled: NO];
@@ -171,8 +175,72 @@ titleForHeaderInSection: (NSInteger) section
     return cell;
 }
 
+- (CGFloat) tableView: (UITableView *) tableView
+heightForRowAtIndexPath: (NSIndexPath *) indexPath
+{
+    if (indexPath.section == 0 && indexPath.row == MMPDeviceCellValidate)
+    {
+        return kMMPButtonTableViewCellHeight;
+    }
+    return kMMPTextFieldTableViewCellHeight;
+}
+
 #pragma mark - Action
 
+- (void) saveAction
+{
+    NSDictionary *info = [self deviceDictionary];
+    
+    MMPDevice *addedDevice = [MMPDevice MR_createEntity];
+    addedDevice.deviceId = [[NSUUID UUID] UUIDString];
+    addedDevice.host = info[kHost];
+    addedDevice.port = info[kPort];
+    addedDevice.password = info[kPassword];
+    addedDevice.addedDate = [NSDate date];
+    addedDevice.deviceData = [NSKeyedArchiver archivedDataWithRootObject: _deviceData];
+    addedDevice.updateInterval = @(kDefaultUpdateDeviceInterval);
+    addedDevice.isOnline = @(YES);
+    
+    for (NSInteger portIndex = 0; portIndex < [_deviceData[kPorts] count]; portIndex++)
+    {
+        MMPControl *control = [MMPControl controlWithDeviceId: addedDevice.deviceId
+                                                      andType: MMPControlTypeSwitch];
+        control.data = [_deviceData[kPorts][portIndex] stringValue];
+        control.name = [NSString stringWithFormat: @"Port %ld", (long)portIndex];
+        control.portNumber = @(portIndex);
+    }
+    
+    for (NSInteger sliderIndex = 0; sliderIndex < 2 ; sliderIndex++)
+    {
+        MMPControl *control = [MMPControl controlWithDeviceId: addedDevice.deviceId
+                                                      andType: MMPControlTypeSlider];
+        control.data = [_deviceData[sliderIndex == 0 ? kSlider1 : kSlider2] stringValue];
+        control.maxValue = _deviceData[kSliderMax];
+        control.portNumber = @(sliderIndex);
+    }
+    
+    for (NSInteger tempIndex = 0; tempIndex < [_deviceData[kTemperature] count] ; tempIndex++)
+    {
+        MMPControl *control = [MMPControl controlWithDeviceId: addedDevice.deviceId
+                                                      andType: MMPControlTypeTemperature];
+        control.data = ![_deviceData[kTemperature][tempIndex] isKindOfClass: [NSString class]] ? [_deviceData[kTemperature][tempIndex] stringValue] : _deviceData[kTemperature][tempIndex];
+        control.name = [NSString stringWithFormat: @"Port %ld", (long)tempIndex];
+        control.portNumber = @(tempIndex);
+    }
+    for (NSInteger watchIndex = 0; watchIndex < [_deviceData[kWatchDog] count] ; watchIndex++)
+    {
+        MMPControl *control = [MMPControl controlWithDeviceId: addedDevice.deviceId
+                                                      andType: MMPControlTypeWatchdog];
+        control.data = [_deviceData[kWatchDog][watchIndex] stringValue];
+        control.name = [NSString stringWithFormat: @"Port %ld", (long)watchIndex];
+        control.portNumber = @(watchIndex);
+    }
+    
+    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError *error) {
+        NSLog(@"Saved %lu controls for device", (unsigned long)[MMPControl MR_countOfEntitiesWithPredicate: [NSPredicate predicateWithFormat: @"deviceId == %@", addedDevice.deviceId]]);
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+}
 
 #pragma mark - Button Delegate
 
@@ -198,14 +266,31 @@ titleForHeaderInSection: (NSInteger) section
          success: ^(AFHTTPRequestOperation *operation, id responseObject) {
              NSLog(@"JSON: %@", responseObject);
              NSError *jsonError;
-             _deviceData = [NSJSONSerialization JSONObjectWithData:responseObject
-                                                                  options: NSJSONReadingMutableContainers
-                                                                    error: &jsonError];
+             _deviceData = [NSJSONSerialization JSONObjectWithData: responseObject
+                                                           options: kNilOptions
+                                                             error: &jsonError];
              if (!jsonError)
              {
                  _isValidatedDevice = YES;
                  [self showSave];
                  [self.tableView reloadData];
+             }
+             else
+             {
+                 NSString *jsonString = [[NSString alloc] initWithData: responseObject
+                                                              encoding: NSUTF8StringEncoding];
+                 jsonString = [self replaceLeadingZerosForString: [jsonString copy]];
+                 NSError *validateError;
+                 _deviceData = [NSJSONSerialization JSONObjectWithData: [jsonString dataUsingEncoding: NSUTF8StringEncoding]
+                                                               options: 0
+                                                                 error: &validateError];
+                 if (!validateError)
+                 {
+                     _isValidatedDevice = YES;
+                     [self showSave];
+                     [self.tableView reloadData];
+                 
+                 }
              }
              [SVProgressHUD dismiss];
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -213,7 +298,22 @@ titleForHeaderInSection: (NSInteger) section
              [SVProgressHUD showErrorWithStatus: [error localizedDescription]];
          }];
     
-    
+}
+
+- (NSString*) replaceLeadingZerosForString: (NSString*) jsonString
+{
+    NSRange range = [jsonString rangeOfString: @"([0]+[1-9]*[.][1-9])[\\S]"
+                                      options: NSRegularExpressionSearch];
+    if (range.location != NSNotFound)
+    {
+        range.length = range.length - 1;
+        CGFloat floatData = [[jsonString substringWithRange: range] floatValue];
+        jsonString = [jsonString stringByReplacingCharactersInRange: range
+                                                         withString: [NSString stringWithFormat: @"%f", floatData]];
+        return [self replaceLeadingZerosForString: jsonString];
+    }
+    else
+        return jsonString;
 }
 
 - (NSDictionary*) deviceDictionary
@@ -224,9 +324,7 @@ titleForHeaderInSection: (NSInteger) section
              kPort : [[(MMPTextFieldTableViewCell*)[self.tableView cellForRowAtIndexPath: [NSIndexPath indexPathForRow: MMPDeviceCellPort
                                                                                                              inSection:0]] textField] text],
              kPassword : [[(MMPTextFieldTableViewCell*)[self.tableView cellForRowAtIndexPath: [NSIndexPath indexPathForRow: MMPDeviceCellPassword
-                                                                                                                 inSection:0]] textField] text],
-             kName : [[(MMPTextFieldTableViewCell*)[self.tableView cellForRowAtIndexPath: [NSIndexPath indexPathForRow: MMPDeviceCellName
-                                                                                                             inSection:0]] textField] text]
+                                                                                                                 inSection:0]] textField] text]
              };
 }
 
@@ -234,7 +332,20 @@ titleForHeaderInSection: (NSInteger) section
 {
     [self.navigationItem setRightBarButtonItem: [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemSave
                                                                                               target: self
-                                                                                              action: nil]];
+                                                                                              action: @selector(saveAction)]];
+}
+
+#pragma mark - TextField Delegate
+
+- (void) textFieldEditingStarted: (UITextField *) textField
+                         forCell: (MMPTextFieldTableViewCell *) cell
+{
+    if (_isValidatedDevice)
+    {
+        [self.navigationItem setRightBarButtonItem: nil];
+        _isValidatedDevice = NO;
+        [self.tableView reloadData];
+    }
 }
 
 @end

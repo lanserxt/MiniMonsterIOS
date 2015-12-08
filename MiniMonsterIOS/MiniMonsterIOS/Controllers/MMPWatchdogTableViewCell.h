@@ -6,8 +6,15 @@
 //  Copyright © 2015 Anton Gubarenko. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "MMPDataTableViewCell.h"
 
-@interface MMPWatchdogTableViewCell : UITableViewCell
+extern NSString* const kMMPWatchdogTableViewCellIdentifier;
+extern const CGFloat kMMPWatchdogTableViewCellHeight;
+
+@interface MMPWatchdogTableViewCell : MMPDataTableViewCell
+
+@property (nonatomic, weak) IBOutlet UILabel *watchNameLabel;
+@property (nonatomic, weak) IBOutlet UILabel *watchResetCountLabel;
+
 
 @end

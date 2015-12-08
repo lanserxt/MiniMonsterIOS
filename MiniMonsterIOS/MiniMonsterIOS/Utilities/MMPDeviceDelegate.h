@@ -6,8 +6,12 @@
 //  Copyright © 2015 Anton Gubarenko. All rights reserved.
 //
 
-#ifndef MMPDeviceDelegate_h
-#define MMPDeviceDelegate_h
+#import <UIKit/UIKit.h>
 
+@protocol MMPDeviceDelegate <NSObject>
 
-#endif /* MMPDeviceDelegate_h */
+@optional
+- (void) deviceIsUpdating: (NSString*) deviceId;
+- (void) deviceIsUpdated: (NSString*) deviceId;
+
+@end

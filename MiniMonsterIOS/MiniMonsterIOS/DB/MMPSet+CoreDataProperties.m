@@ -15,5 +15,6 @@
 
 @dynamic setId;
 @dynamic name;
+@dynamic addedDate;
 
 @end

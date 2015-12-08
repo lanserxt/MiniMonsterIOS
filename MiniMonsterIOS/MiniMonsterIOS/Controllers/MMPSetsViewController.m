@@ -7,31 +7,38 @@
 //
 
 #import "MMPSetsViewController.h"
+#import "MMPSet+CoreDataProperties.h"
+#import <MagicalRecord.h>
 
 @interface MMPSetsViewController ()
+
+@property (nonatomic) NSMutableArray *sets;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
 @implementation MMPSetsViewController
 
-- (void)viewDidLoad {
+#pragma mark - View Lyfe Cycle
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    _sets = [NSMutableArray arrayWithCapacity: 0];
+    self.title = @"Sets";
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) viewWillAppear: (BOOL) animated
+{
+    [super viewWillAppear: animated];
+    [self loadSets];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) loadSets
+{
+    _sets = [[MMPSet MR_findAllSortedBy: @"addedDate"
+                                    ascending: YES] mutableCopy];
 }
-*/
+
 
 @end

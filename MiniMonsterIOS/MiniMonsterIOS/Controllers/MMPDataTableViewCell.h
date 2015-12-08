@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MMPControl.h"
+#import "MMPConstants.h"
 
 @interface MMPDataTableViewCell : UITableViewCell
+
+- (void) setDataForControl: (MMPControl*) control;
 
 @end

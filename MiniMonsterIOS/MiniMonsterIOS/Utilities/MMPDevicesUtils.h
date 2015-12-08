@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MMPDeviceDelegate.h"
 
 @interface MMPDevicesUtils : NSObject
+
+@property (nonatomic, weak) id <MMPDeviceDelegate> delegate;
 
 @end

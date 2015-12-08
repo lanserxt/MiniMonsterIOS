@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class MMPDevice;
+
 @interface MMPDeviceViewController : UITabBarController
+
++ (instancetype) classObject;
+
+@property (nonatomic) MMPDevice *selectedDevice;
 
 @end

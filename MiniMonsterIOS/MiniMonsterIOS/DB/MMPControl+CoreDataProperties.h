@@ -11,18 +11,31 @@
 
 #import "MMPControl.h"
 
+typedef NS_ENUM(NSInteger, MMPControlType)
+{
+    MMPControlTypeSwitch = 0,
+    MMPControlTypeSlider,
+    MMPControlTypeTemperature,
+    MMPControlTypeWatchdog
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MMPControl (CoreDataProperties)
 
++ (instancetype) controlWithDeviceId: (NSString*) deviceId
+                             andType: (MMPControlType) type;
+
 @property (nullable, nonatomic, retain) NSString *controlId;
-@property (nullable, nonatomic, retain) NSNumber *data;
+@property (nullable, nonatomic, retain) NSString *data;
 @property (nullable, nonatomic, retain) NSString *deviceId;
 @property (nullable, nonatomic, retain) NSNumber *type;
-@property (nullable, nonatomic, retain) NSData *icon;
 @property (nullable, nonatomic, retain) NSNumber *interval;
 @property (nullable, nonatomic, retain) NSNumber *maxValue;
 @property (nullable, nonatomic, retain) NSString *request;
+@property (nullable, nonatomic, retain) NSString *setId;
+@property (nullable, nonatomic, retain) NSString *name;
+@property (nullable, nonatomic, retain) NSNumber *portNumber;
 
 @end
 

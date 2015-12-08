@@ -7,6 +7,8 @@
 //
 
 #import "MMPDeviceViewController.h"
+#import "MMPConstants.h"
+#import "MMPDeviceDataViewController.h"
 
 @interface MMPDeviceViewController ()
 
@@ -14,24 +16,34 @@
 
 @implementation MMPDeviceViewController
 
-- (void)viewDidLoad {
+
+#pragma mark - Class
+
++ (instancetype) classObject
+{
+    UIStoryboard *sb = [UIStoryboard storyboardWithName: kMainStoryboard
+                                                 bundle: nil];
+    MMPDeviceViewController *vc = (MMPDeviceViewController *)[sb instantiateViewControllerWithIdentifier: NSStringFromClass([self class])];
+    return vc;
+}
+
+#pragma mark - View Lyfe Cycle
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.title = @"Device Info";
+    [self setupViews];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) setupViews
+{
+    for (MMPDeviceDataViewController *controller in self.viewControllers)
+    {
+        [controller setSelectedDevice: self.selectedDevice];
+    }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

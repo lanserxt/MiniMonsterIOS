@@ -7,31 +7,70 @@
 //
 
 #import "MMPWatchdogViewController.h"
+#import "MMPWatchdogTableViewCell.h"
+#import "MMPControl+CoreDataProperties.h"
 
 @interface MMPWatchdogViewController ()
-
+@property (nonatomic) NSArray *watchDogs;
 @end
 
 @implementation MMPWatchdogViewController
 
-- (void)viewDidLoad {
+#pragma mark - View Lyfe Cycle
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) viewWillAppear: (BOOL) animated
+{
+    [super viewWillAppear: animated];
+    self.title = @"W-Dog";
+    [self.tabBarController.navigationItem setRightBarButtonItem: nil];
+    [self updateControls];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) updateControls
+{
+    [self loadWatchDogs];
+    [self.tableView reloadData];
 }
-*/
+
+- (void) loadWatchDogs
+{
+    _watchDogs = [MMPControl MR_findAllSortedBy: @"name"
+                                       ascending: YES
+                                   withPredicate: [NSPredicate predicateWithFormat: @"deviceId == %@ AND type = %@", self.selectedDevice.deviceId, @(MMPControlTypeWatchdog)]];
+}
+
+#pragma mark - TableView Data Source
+
+- (NSInteger) tableView: (UITableView *) tableView
+  numberOfRowsInSection: (NSInteger) section
+{
+    return [_watchDogs count];
+}
+
+- (UITableViewCell*) tableView: (UITableView *) tableView
+         cellForRowAtIndexPath: (NSIndexPath *) indexPath
+{
+    MMPWatchdogTableViewCell *watchCell = [tableView dequeueReusableCellWithIdentifier: kMMPWatchdogTableViewCellIdentifier
+                                                                         forIndexPath: indexPath];
+    [watchCell setDataForControl: _watchDogs[indexPath.row]];
+    return watchCell;
+}
+
+- (CGFloat) tableView: (UITableView *) tableView
+heightForRowAtIndexPath: (NSIndexPath *) indexPath
+{
+    return kMMPWatchdogTableViewCellHeight;
+}
+
+- (NSString*) tableView: (UITableView *) tableView
+titleForHeaderInSection: (NSInteger) section
+{
+    return @"Reset count for W-dog";
+}
 
 @end

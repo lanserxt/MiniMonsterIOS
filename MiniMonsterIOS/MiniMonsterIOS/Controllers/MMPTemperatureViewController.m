@@ -7,31 +7,160 @@
 //
 
 #import "MMPTemperatureViewController.h"
+#import "MMPTemperatureTableViewCell.h"
+#import "MMPControl+CoreDataProperties.h"
+#import <SVProgressHUD.h>
+
 
 @interface MMPTemperatureViewController ()
+
+@property (nonatomic) NSArray *tempPorts;
 
 @end
 
 @implementation MMPTemperatureViewController
 
-- (void)viewDidLoad {
+#pragma mark - View Lyfe Cycle
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) viewWillAppear: (BOOL) animated
+{
+    [super viewWillAppear: animated];
+    self.title = @"t°C";
+    [self updateControls];
+    [self.tabBarController.navigationItem setRightBarButtonItem: nil];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) updateControls
+{
+    [self loadTemp];
+    [self.tableView reloadData];
 }
-*/
+
+- (void) loadTemp
+{
+    _tempPorts = [MMPControl MR_findAllSortedBy: @"name"
+                                       ascending: YES
+                                   withPredicate: [NSPredicate predicateWithFormat: @"deviceId == %@ AND type = %@", self.selectedDevice.deviceId, @(MMPControlTypeTemperature)]];
+}
+
+#pragma mark - TableView Data Source
+
+- (NSInteger) tableView: (UITableView *) tableView
+  numberOfRowsInSection: (NSInteger) section
+{
+    return [_tempPorts count];
+}
+
+- (UITableViewCell*) tableView: (UITableView *) tableView
+         cellForRowAtIndexPath: (NSIndexPath *) indexPath
+{
+    MMPTemperatureTableViewCell *tempCell = [tableView dequeueReusableCellWithIdentifier: kMMPTemperatureTableViewCellIdentifier
+                                                                            forIndexPath: indexPath];
+    [tempCell setDataForControl: _tempPorts[indexPath.row]];
+    return tempCell;
+}
+
+- (CGFloat) tableView: (UITableView *) tableView
+heightForRowAtIndexPath: (NSIndexPath *) indexPath
+{
+    return kMMPTemperatureTableViewCellHeight;
+}
+
+- (NSString*) tableView: (UITableView *) tableView
+titleForHeaderInSection: (NSInteger) section
+{
+    return @"Tap to change temperature";
+}
+
+- (void) tableView: (UITableView *) tableView
+didSelectRowAtIndexPath: (NSIndexPath *) indexPath
+{
+    MMPControl *tempControl = _tempPorts[indexPath.row];
+    
+    if ([tempControl.data isEqualToString: kNoData])
+    {
+        [UIAlertView showWithTitle: @"Error"
+                           message: @"Sorry, no temperture sensor on this port"
+                 cancelButtonTitle: @"OK"
+                 otherButtonTitles: nil
+                          tapBlock: nil];
+    }
+    else
+    {
+        [UIAlertView showWithTitle: nil
+                           message: @"Do you really want to change temp on this port?"
+                 cancelButtonTitle: @"No"
+                 otherButtonTitles: @[@"Yes"]
+                          tapBlock: ^(UIAlertView * _Nonnull alertView, NSInteger buttonIndex) {
+                              if (alertView.cancelButtonIndex != buttonIndex)
+                              {
+                                  [self promptForTempOnPort: indexPath.row];
+                              }
+                          }];
+    }
+}
+
+- (void) promptForTempOnPort: (NSInteger) portNumber
+{
+    UIAlertView *alertView = [UIAlertView showWithTitle:@"Temperture" message:@"Please enter temp" style:UIAlertViewStylePlainTextInput cancelButtonTitle: @"Cancel" otherButtonTitles: @[@"OK"] tapBlock:^(UIAlertView * _Nonnull alertView, NSInteger buttonIndex) {
+        if (alertView.cancelButtonIndex != buttonIndex)
+        {
+            if ([self isNumeric: [[alertView textFieldAtIndex:0] text]])
+            {
+                [self setTemp: [[alertView textFieldAtIndex:0] text]
+                       onPort: portNumber];
+            }
+            else
+            {
+                [UIAlertView showWithTitle: @"Error"
+                                   message: @"Sorry, can't detect the temperture value"
+                         cancelButtonTitle: @"OK"
+                         otherButtonTitles: nil
+                                  tapBlock: nil];
+            }
+            
+        }
+    }];
+    [[alertView textFieldAtIndex:0] setText: [NSString stringWithFormat: @"%@",[_tempPorts[portNumber] data]]];
+}
+
+- (BOOL) isNumeric:(NSString*) checkText
+{
+    
+    NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+    [numberFormatter setNumberStyle: NSNumberFormatterScientificStyle];
+    NSNumber* number = [numberFormatter numberFromString:checkText];
+    if (number != nil)
+    {
+        return YES;
+    }
+    return NO;
+}
+
+- (void) setTemp: (NSString*) temp
+          onPort: (NSInteger) portNumber
+{
+    [SVProgressHUD showWithStatus: @"Setting temp..."
+                         maskType: SVProgressHUDMaskTypeBlack];
+    NSString *url = [NSString stringWithFormat: @"%@:%@/%@/?t%ld=+%2.1f", self.selectedDevice.host, self.selectedDevice.port, self.selectedDevice.password, (long)portNumber, [temp floatValue]];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager setResponseSerializer: [AFHTTPResponseSerializer serializer]];
+    [manager GET:url
+      parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             NSLog(@"JSON: %@", responseObject);
+             [SVProgressHUD showSuccessWithStatus: @"Changed"];
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"Error: %@", error);
+             [SVProgressHUD showErrorWithStatus: @"Please try later"];
+         }];
+}
+
 
 @end

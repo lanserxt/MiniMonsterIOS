@@ -10,14 +10,13 @@
 
 @implementation MMPDataTableViewCell
 
-- (void)awakeFromNib {
-    // Initialization code
-}
+#pragma mark - Methods
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void) setDataForControl: (MMPControl*) control
+{
+    @throw [NSException exceptionWithName: @"Not implemented"
+                                   reason: @"Need setDataForControl: method"
+                                 userInfo: nil];
 }
 
 @end

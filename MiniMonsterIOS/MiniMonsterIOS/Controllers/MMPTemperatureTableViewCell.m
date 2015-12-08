@@ -8,16 +8,17 @@
 
 #import "MMPTemperatureTableViewCell.h"
 
+NSString* const kMMPTemperatureTableViewCellIdentifier = @"MMPTemperatureTableViewCell";
+const CGFloat kMMPTemperatureTableViewCellHeight = 44.0f;
+
 @implementation MMPTemperatureTableViewCell
 
-- (void)awakeFromNib {
-    // Initialization code
-}
+#pragma mark - Methods
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void) setDataForControl: (MMPControl*) control
+{
+    [self.portNameLabel setText: control.name];
+    [self.tempLabel setText: [control.data isEqualToString: kNoData] ? @"-" :[NSString stringWithFormat: @"%@ °C", control.data]];
 }
 
 @end

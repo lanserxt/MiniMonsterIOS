@@ -10,6 +10,7 @@
 //
 
 #import "MMPControl+CoreDataProperties.h"
+#import <MagicalRecord.h>
 
 @implementation MMPControl (CoreDataProperties)
 
@@ -17,9 +18,23 @@
 @dynamic data;
 @dynamic deviceId;
 @dynamic type;
-@dynamic icon;
 @dynamic interval;
 @dynamic maxValue;
 @dynamic request;
+@dynamic setId;
+@dynamic name;
+@dynamic portNumber;
+
+#pragma mark - Init
+
++ (instancetype) controlWithDeviceId: (NSString*) deviceId
+                             andType: (MMPControlType) type
+{
+    MMPControl *control = [MMPControl MR_createEntityInContext: [NSManagedObjectContext MR_defaultContext]];
+    control.controlId = [[NSUUID UUID] UUIDString];
+    control.deviceId = [deviceId copy];
+    control.type = @(type);
+    return control;
+}
 
 @end

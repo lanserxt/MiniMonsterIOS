@@ -7,7 +7,20 @@
 //
 
 #import "MMPDataTableViewCell.h"
+#import "MMPSliderDelegate.h"
+
+extern NSString* const kMMPSliderTableViewCellIdentifier;
+extern const CGFloat kMMPSliderTableViewCellHeight;
 
 @interface MMPSliderTableViewCell : MMPDataTableViewCell
 
+@property (nonatomic, weak) IBOutlet UISlider *powerSlider;
+@property (nonatomic, weak) IBOutlet UITextField *powerValueField;
+@property (nonatomic, weak) IBOutlet UIButton *powerSetButton;
+@property (nonatomic, weak) id<MMPSliderDelegate> delegate;
+
+- (void) setSavedData: (CGFloat) savedData;
+
 @end
+
+

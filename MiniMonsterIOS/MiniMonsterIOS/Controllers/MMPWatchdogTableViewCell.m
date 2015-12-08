@@ -8,16 +8,17 @@
 
 #import "MMPWatchdogTableViewCell.h"
 
+NSString* const kMMPWatchdogTableViewCellIdentifier = @"MMPWatchdogTableViewCell";
+const CGFloat kMMPWatchdogTableViewCellHeight = 44.0f;
+
 @implementation MMPWatchdogTableViewCell
 
-- (void)awakeFromNib {
-    // Initialization code
-}
+#pragma mark - Methods
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void) setDataForControl: (MMPControl*) control
+{
+    [self.watchNameLabel setText: control.name];
+    [self.watchResetCountLabel setText: control.data];
 }
 
 @end

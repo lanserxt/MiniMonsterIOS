@@ -10,4 +10,6 @@
 
 @interface MMPAddDeviceViewController : MMPBaseViewController
 
++ (instancetype) classObject;
+
 @end

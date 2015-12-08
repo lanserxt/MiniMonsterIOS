@@ -10,14 +10,34 @@
 //
 
 #import "MMPDevice+CoreDataProperties.h"
+#import "MMPConstants.h"
 
 @implementation MMPDevice (CoreDataProperties)
 
 @dynamic deviceId;
-@dynamic address;
+@dynamic host;
 @dynamic port;
 @dynamic localName;
 @dynamic password;
-@dynamic added;
+@dynamic addedDate;
+@dynamic thumb;
+@dynamic deviceData;
+@dynamic updateInterval;
+@dynamic isOnline;
+
+#pragma mark - Methods
+
+- (nullable NSString*) deviceName
+{
+    NSDictionary *dataDictionary = (NSDictionary*) [NSKeyedUnarchiver unarchiveObjectWithData: self.deviceData];
+    return dataDictionary[kId];
+}
+
+- (nullable NSString*) firmware
+{
+    NSDictionary *dataDictionary = (NSDictionary*) [NSKeyedUnarchiver unarchiveObjectWithData: self.deviceData];
+    return dataDictionary[kFirmware];
+    
+}
 
 @end

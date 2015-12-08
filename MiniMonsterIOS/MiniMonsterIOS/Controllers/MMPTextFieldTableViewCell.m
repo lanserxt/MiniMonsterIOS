@@ -9,11 +9,16 @@
 #import "MMPTextFieldTableViewCell.h"
 
 NSString* const kMMPTextFieldTableViewCellIdentifier = @"MMPTextFieldTableViewCell";
-const CGFloat kMMPTextFieldTableViewCellHeight = 77.0f;
+const CGFloat kMMPTextFieldTableViewCellHeight = 44.0f;
 
 @implementation MMPTextFieldTableViewCell
 
 #pragma mark - UITextField Delegate
+
+- (void) textFieldDidBeginEditing: (UITextField *) textField
+{
+    
+}
 
 - (BOOL) textFieldShouldReturn: (UITextField *) textField
 {

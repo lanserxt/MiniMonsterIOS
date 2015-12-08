@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MMPDevice+CoreDataProperties.h"
+#import <MagicalRecord.h>
+#import <UIAlertView+Blocks.h>
+#import <AFNetworking.h>
+#import "MMPDevicesUtils.h"
 
 @interface MMPDeviceDataViewController : UIViewController
+
+@property (nonatomic) MMPDevice *selectedDevice;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+
+- (void) updateControls;
 
 @end
