@@ -94,7 +94,6 @@ titleForHeaderInSection: (NSInteger) section
     [SVProgressHUD showWithStatus: @"Setting pwm..."
                          maskType: SVProgressHUDMaskTypeBlack];
     MMPControl *control = (MMPControl*)_slidersData[portNumber];
-    
     NSString *url = [NSString stringWithFormat: @"%@:%@/%@/?cpw%ld=%.0f", self.selectedDevice.host, self.selectedDevice.port, self.selectedDevice.password, (long)portNumber, value];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager setResponseSerializer: [AFHTTPResponseSerializer serializer]];
@@ -115,6 +114,7 @@ titleForHeaderInSection: (NSInteger) section
                  
              } completion:^(BOOL success, NSError *error) {
                  [self.tableView reloadData];
+                 [[MMPDevicesUtils sharedUtils] updateDevices];
              }];
              
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

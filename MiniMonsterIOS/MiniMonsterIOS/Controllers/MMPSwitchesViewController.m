@@ -64,7 +64,7 @@
                                                                          forIndexPath: indexPath];
     [switchCell setDataForControl: _switchesData[indexPath.row]];
     [switchCell setDelegate: self];
-    [switchCell.portResetButton setTag: indexPath.row];
+    [switchCell.portResetButton setTag: indexPath.row];    
     return switchCell;
 }
 
@@ -97,13 +97,13 @@ titleForHeaderInSection: (NSInteger) section
                          maskType: SVProgressHUDMaskTypeBlack];
     MMPControl *control = (MMPControl*)_switchesData[portNumber];
     
-    NSString *url = [NSString stringWithFormat: @"%@:%@/%@/?sw=%ld-%@", self.selectedDevice.host, self.selectedDevice.port, self.selectedDevice.password, (long)portNumber, value ? @"1" : @"0"];
+    NSString *url = [NSString stringWithFormat: @"%@:%@/%@/?sw=%ld-%@", self.selectedDevice.host, self.selectedDevice.port, self.selectedDevice.password, (long)portNumber +1, value ? @"1" : @"0"];
+    NSLog(@"Switching %@", url);
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager setResponseSerializer: [AFHTTPResponseSerializer serializer]];
     [manager GET:url
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-             NSLog(@"JSON: %@", responseObject);
              [SVProgressHUD showSuccessWithStatus: @"Changed"];
              
              [MagicalRecord saveWithBlock: ^(NSManagedObjectContext *localContext) {
@@ -117,6 +117,7 @@ titleForHeaderInSection: (NSInteger) section
                                        animated: YES];
                  
              } completion:^(BOOL success, NSError *error) {
+                 [[MMPDevicesUtils sharedUtils] updateDevices];
              }];
              
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -135,14 +136,14 @@ titleForHeaderInSection: (NSInteger) section
 {
     [SVProgressHUD showWithStatus: @"Resetting port..."
                          maskType: SVProgressHUDMaskTypeBlack];
-    NSString *url = [NSString stringWithFormat: @"%@:%@/%@/?rst=%ld", self.selectedDevice.host, self.selectedDevice.port, self.selectedDevice.password, (long)portNumber];
+    NSString *url = [NSString stringWithFormat: @"%@:%@/%@/?rst=%ld", self.selectedDevice.host, self.selectedDevice.port, self.selectedDevice.password, (long)portNumber +1];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager setResponseSerializer: [AFHTTPResponseSerializer serializer]];
     [manager GET:url
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-             NSLog(@"JSON: %@", responseObject);
              [SVProgressHUD showSuccessWithStatus: @"Port is reset"];
+             [[MMPDevicesUtils sharedUtils] updateDevices];
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"Error: %@", error);
              [SVProgressHUD showErrorWithStatus: @"Please try later"];

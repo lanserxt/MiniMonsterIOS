@@ -24,6 +24,7 @@
 @dynamic deviceData;
 @dynamic updateInterval;
 @dynamic isOnline;
+@dynamic latestUpdate;
 
 #pragma mark - Methods
 

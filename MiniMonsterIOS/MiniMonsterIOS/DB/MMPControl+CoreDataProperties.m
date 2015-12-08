@@ -24,6 +24,7 @@
 @dynamic setId;
 @dynamic name;
 @dynamic portNumber;
+@dynamic isOutState;
 
 #pragma mark - Init
 

@@ -6,6 +6,7 @@
         <attribute name="deviceId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="icon" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="interval" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="isOutState" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="maxValue" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="portNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -19,6 +20,7 @@
         <attribute name="deviceId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="host" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isOnline" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="latestUpdate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="localName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="port" optional="YES" attributeType="String" syncable="YES"/>
@@ -31,8 +33,8 @@
         <attribute name="setId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MMPControl" positionX="-54" positionY="-9" width="128" height="210"/>
-        <element name="MMPDevice" positionX="241" positionY="-90" width="128" height="195"/>
+        <element name="MMPControl" positionX="-54" positionY="-9" width="128" height="225"/>
+        <element name="MMPDevice" positionX="241" positionY="-90" width="128" height="210"/>
         <element name="MMPSet" positionX="90" positionY="9" width="128" height="90"/>
     </elements>
 </model>

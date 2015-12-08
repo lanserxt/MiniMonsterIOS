@@ -16,8 +16,10 @@
 #define kId @"id"
 #define kFirmware @"fwv"
 #define kDefaultUpdateDeviceInterval 30.0f
+#define kDefaultTimeout 3.0f
 
 #define kPorts @"prt"
+#define kPortsState @"pst"
 #define kSlider1 @"pwm1"
 #define kSlider2 @"pwm2"
 #define kSliderMax @"pwmt"

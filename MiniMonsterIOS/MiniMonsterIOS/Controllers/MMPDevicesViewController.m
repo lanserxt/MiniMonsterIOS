@@ -13,11 +13,14 @@
 #import "MMPControl+CoreDataProperties.h"
 #import "MMPAddDeviceViewController.h"
 #import "MMPDeviceViewController.h"
+#import "MMPDevicesUtils.h"
 
-@interface MMPDevicesViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MMPDevicesViewController () <UITableViewDataSource, UITableViewDelegate, MMPDeviceDelegate>
+
 @property (weak, nonatomic) IBOutlet UILabel *noDevicesLabel;
 @property (nonatomic) NSMutableArray *devices;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 @implementation MMPDevicesViewController
@@ -38,12 +41,21 @@
     
     self.tabBarController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemEdit target:self action:@selector(editAction:)];
     self.tabBarController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemAdd target:self action:@selector(addAction)];
+    [[MMPDevicesUtils sharedUtils] setDelegate: self];
+    [[MMPDevicesUtils sharedUtils] updateDevices];
 }
 
 - (void) loadDevices
 {
     _devices = [[MMPDevice MR_findAllSortedBy: @"addedDate"
                                     ascending: YES] mutableCopy];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear: animated];
+    
+    [[MMPDevicesUtils sharedUtils] setDelegate: nil];
 }
 
 #pragma mark - TableView Data Source
@@ -60,7 +72,7 @@
          cellForRowAtIndexPath: (NSIndexPath *) indexPath
 {
     MMPDeviceTableViewCell *deviceCell = [tableView dequeueReusableCellWithIdentifier: kMMPDeviceTableViewCellIdentifier
-                                                                        forIndexPath: indexPath];
+                                                                         forIndexPath: indexPath];
     [deviceCell setDataForDevice: _devices[indexPath.row]];
     return deviceCell;
 }
@@ -68,10 +80,25 @@
 - (void) tableView: (UITableView *) tableView
 didSelectRowAtIndexPath: (NSIndexPath *) indexPath
 {
-    MMPDeviceViewController *deviceVC = [MMPDeviceViewController classObject];
-    [deviceVC setSelectedDevice: _devices[indexPath.row]];
-    [self.tabBarController.navigationController pushViewController: deviceVC
-                                                          animated: YES];
+    if (![[MMPDevicesUtils sharedUtils] isUpdatingDevice: [_devices[indexPath.row] deviceId]])
+    {
+        if ([[_devices[indexPath.row] isOnline] boolValue])
+        {
+            MMPDeviceViewController *deviceVC = [MMPDeviceViewController classObject];
+            [deviceVC setSelectedDevice: _devices[indexPath.row]];
+            [self.tabBarController.navigationController pushViewController: deviceVC
+                                                                  animated: YES];
+        }
+        
+        else
+        {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"This device is offline" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+        }
+    }
+    else
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"This device is updating" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+    }
 }
 
 - (CGFloat) tableView: (UITableView *) tableView
@@ -107,9 +134,8 @@ commitEditingStyle: (UITableViewCellEditingStyle) editingStyle
         [deletedDevice MR_deleteEntity];
         [_devices removeObjectAtIndex: indexPath.row];
         [self.tableView deleteRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: indexPath.row
-                                                                    inSection: indexPath.section]]
+                                                                     inSection: indexPath.section]]
                               withRowAnimation: UITableViewRowAnimationFade];
-        
         
     }
 }
@@ -121,8 +147,8 @@ commitEditingStyle: (UITableViewCellEditingStyle) editingStyle
     [self.tableView setEditing: YES
                       animated: YES];
     [self.tabBarController.navigationItem setLeftBarButtonItem: [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemDone
-                                                                                              target: self
-                                                                                              action: @selector(doneAction)]];
+                                                                                                              target: self
+                                                                                                              action: @selector(doneAction)]];
 }
 
 - (void) doneAction
@@ -130,14 +156,38 @@ commitEditingStyle: (UITableViewCellEditingStyle) editingStyle
     [self.tableView setEditing: NO
                       animated: YES];
     [self.tabBarController.navigationItem setLeftBarButtonItem: [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemEdit
-                                                                                              target: self
-                                                                                              action: @selector(editAction:)]];
+                                                                                                              target: self
+                                                                                                              action: @selector(editAction:)]];
 }
 
 - (void) addAction
 {
     [self.tabBarController.navigationController pushViewController: [MMPAddDeviceViewController classObject]
                                                           animated: YES];
+}
+
+#pragma mark - Device Delegate
+
+- (void) deviceIsUpdating: (NSString *) deviceId
+{
+    NSLog(@"Updating %@", deviceId);
+    [self.tableView reloadData];
+}
+
+- (void) deviceIsUpdated: (NSString *) deviceId
+{
+    NSInteger index = [_devices indexOfObjectPassingTest:^BOOL(MMPDevice *device, NSUInteger idx, BOOL * _Nonnull stop) {
+        return [device.deviceId isEqualToString: deviceId];
+    }];
+    
+    if (index != NSNotFound && [[self.tableView indexPathsForVisibleRows] containsObject: [NSIndexPath indexPathForRow:index inSection:0]])
+    {
+        [_devices replaceObjectAtIndex:index withObject: [MMPDevice MR_findFirstByAttribute: @"deviceId"
+                                                                                  withValue: deviceId]];
+        [self.tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow:index inSection:0]]
+                              withRowAnimation: UITableViewRowAnimationAutomatic];
+    }
+    NSLog(@"Updated %@", deviceId);
 }
 
 @end

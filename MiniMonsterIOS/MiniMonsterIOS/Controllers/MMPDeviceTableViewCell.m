@@ -8,6 +8,7 @@
 
 #import "MMPDeviceTableViewCell.h"
 #import "MMPDevice+CoreDataProperties.h"
+#import "MMPDevicesUtils.h"
 
 NSString* const kMMPDeviceTableViewCellIdentifier = @"MMPDeviceTableViewCell";
 const CGFloat kMMPDeviceTableViewCellHeight = 150.0f;
@@ -24,6 +25,17 @@ const CGFloat kMMPDeviceTableViewCellHeight = 150.0f;
 - (void) setDataForDevice: (MMPDevice*) device
 {
     [self.firmLabel setText: [device firmware]];
+    
+    if ([[MMPDevicesUtils sharedUtils] isUpdatingDevice: device.deviceId])
+    {
+        [self.statusCircle setBackgroundColor: [UIColor blueColor]];
+        [self.statusLabel setText: @"Updating..."];
+    }
+    else
+    {
+        [self.statusCircle setBackgroundColor: [device.isOnline boolValue] ? [UIColor greenColor] : [UIColor redColor]];
+        [self.statusLabel setText: [device.isOnline boolValue] ? @"Online" : @"Offline"];
+    }
 }
 
 @end

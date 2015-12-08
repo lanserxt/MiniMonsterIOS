@@ -8,7 +8,7 @@
 
 #import "MMPDeviceDataViewController.h"
 
-@interface MMPDeviceDataViewController ()
+@interface MMPDeviceDataViewController () <MMPDeviceDelegate>
 
 @end
 
@@ -23,7 +23,20 @@
 {
     [super viewWillAppear: animated];
     
-    [MMPDevicesUtils sha]
+    [[MMPDevicesUtils sharedUtils] setDelegate: self];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear: animated];
+}
+
+#pragma mark - Device Delegate
+
+- (void) deviceIsUpdated: (NSString *) deviceId
+{
+    [self updateControls];
+    NSLog(@"Updated %@", deviceId);
 }
 
 @end

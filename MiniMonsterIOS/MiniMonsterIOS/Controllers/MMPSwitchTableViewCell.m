@@ -31,6 +31,8 @@ const CGFloat kMMPSwitchTableViewCellHeight = 70.0f;
                                 action: @selector(resetAction:)
                       forControlEvents: UIControlEventTouchUpInside];
     }
+    [self.portSwitch setEnabled: [control.isOutState boolValue]];
+    [self.portResetButton setEnabled: [control.isOutState boolValue]];
     [self.portNameLabel setText: control.name];
     [self.portNameField setText: control.name];
     [self.portSwitch setOn: [control.data boolValue]

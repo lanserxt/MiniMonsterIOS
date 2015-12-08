@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSData *deviceData;
 @property (nullable, nonatomic, retain) NSNumber *updateInterval;
 @property (nullable, nonatomic, retain) NSNumber *isOnline;
+@property (nullable, nonatomic, retain) NSDate *latestUpdate;
 
 - (nullable NSString*) deviceName;
 - (nullable NSString*) firmware;

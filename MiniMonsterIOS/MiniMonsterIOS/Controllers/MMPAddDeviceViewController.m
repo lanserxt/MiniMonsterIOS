@@ -15,6 +15,7 @@
 #import "MMPConstants.h"
 #import <SVProgressHUD.h>
 #import "MMPControl+CoreDataProperties.h"
+#import "MMPDevicesUtils.h"
 
 typedef NS_ENUM(NSInteger, MMPDeviceCell)
 {
@@ -200,6 +201,7 @@ heightForRowAtIndexPath: (NSIndexPath *) indexPath
     addedDevice.deviceData = [NSKeyedArchiver archivedDataWithRootObject: _deviceData];
     addedDevice.updateInterval = @(kDefaultUpdateDeviceInterval);
     addedDevice.isOnline = @(YES);
+    addedDevice.latestUpdate = [NSDate date];
     
     for (NSInteger portIndex = 0; portIndex < [_deviceData[kPorts] count]; portIndex++)
     {
@@ -208,6 +210,7 @@ heightForRowAtIndexPath: (NSIndexPath *) indexPath
         control.data = [_deviceData[kPorts][portIndex] stringValue];
         control.name = [NSString stringWithFormat: @"Port %ld", (long)portIndex];
         control.portNumber = @(portIndex);
+        control.isOutState = @([_deviceData[kPortsState][portIndex] boolValue]);
     }
     
     for (NSInteger sliderIndex = 0; sliderIndex < 2 ; sliderIndex++)
@@ -238,7 +241,8 @@ heightForRowAtIndexPath: (NSIndexPath *) indexPath
     
     [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave, NSError *error) {
         NSLog(@"Saved %lu controls for device", (unsigned long)[MMPControl MR_countOfEntitiesWithPredicate: [NSPredicate predicateWithFormat: @"deviceId == %@", addedDevice.deviceId]]);
-        [self.navigationController popViewControllerAnimated:YES];
+        [[MMPDevicesUtils sharedUtils] startUpdatingLoopForDevice: addedDevice];
+        [self.navigationController popViewControllerAnimated: YES];
     }];
 }
 
@@ -302,7 +306,7 @@ heightForRowAtIndexPath: (NSIndexPath *) indexPath
 
 - (NSString*) replaceLeadingZerosForString: (NSString*) jsonString
 {
-    NSRange range = [jsonString rangeOfString: @"([0]+[1-9]*[.][1-9])[\\S]"
+    NSRange range = [jsonString rangeOfString: @"([0]+[1-9]*[.][0-9]+)[\\S]"
                                       options: NSRegularExpressionSearch];
     if (range.location != NSNotFound)
     {

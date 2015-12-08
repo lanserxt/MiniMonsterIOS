@@ -148,7 +148,7 @@ didSelectRowAtIndexPath: (NSIndexPath *) indexPath
 {
     [SVProgressHUD showWithStatus: @"Setting temp..."
                          maskType: SVProgressHUDMaskTypeBlack];
-    NSString *url = [NSString stringWithFormat: @"%@:%@/%@/?t%ld=+%2.1f", self.selectedDevice.host, self.selectedDevice.port, self.selectedDevice.password, (long)portNumber, [temp floatValue]];
+    NSString *url = [NSString stringWithFormat: @"%@:%@/%@/?t%ld=+%2.1f", self.selectedDevice.host, self.selectedDevice.port, self.selectedDevice.password, (long)portNumber+1, [temp floatValue]];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager setResponseSerializer: [AFHTTPResponseSerializer serializer]];
     [manager GET:url
@@ -156,6 +156,7 @@ didSelectRowAtIndexPath: (NSIndexPath *) indexPath
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              NSLog(@"JSON: %@", responseObject);
              [SVProgressHUD showSuccessWithStatus: @"Changed"];
+             [[MMPDevicesUtils sharedUtils] updateDevices];
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"Error: %@", error);
              [SVProgressHUD showErrorWithStatus: @"Please try later"];
