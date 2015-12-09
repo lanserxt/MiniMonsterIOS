@@ -14,5 +14,16 @@
 
 @implementation MMPInfoViewController
 
+#pragma mark - View Lyfe Cycle
+
+
+- (void) viewWillAppear: (BOOL) animated
+{
+    [super viewWillAppear: animated];
+    self.title = @"About";
+    
+    self.tabBarController.navigationItem.leftBarButtonItem = nil;
+    self.tabBarController.navigationItem.rightBarButtonItem = nil;
+}
 
 @end

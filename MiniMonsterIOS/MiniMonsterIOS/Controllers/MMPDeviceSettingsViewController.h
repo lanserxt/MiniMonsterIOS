@@ -6,8 +6,8 @@
 //  Copyright © 2015 Anton Gubarenko. All rights reserved.
 //
 
-#import "MMPBaseViewController.h"
+#import "MMPDeviceDataViewController.h"
 
-@interface MMPDeviceSettingsViewController : MMPBaseViewController
+@interface MMPDeviceSettingsViewController : MMPDeviceDataViewController
 
 @end

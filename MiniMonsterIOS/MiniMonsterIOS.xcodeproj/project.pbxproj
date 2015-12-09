@@ -38,6 +38,7 @@
 		337977B71BD93432007EB8E3 /* MMPControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 337977B31BD93432007EB8E3 /* MMPControl.m */; };
 		33A1798E1BE8E65700E0F40D /* MMPTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A1798D1BE8E65700E0F40D /* MMPTextFieldTableViewCell.m */; };
 		33D8FCD31BEB4B1800D68EC9 /* MMPButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D8FCD21BEB4B1800D68EC9 /* MMPButtonTableViewCell.m */; };
+		33E5015F1C182891002E8F93 /* MMPDeviceSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5015E1C182891002E8F93 /* MMPDeviceSettingsViewController.m */; };
 		33F0BF5C1C15CBBE0011EC14 /* MMPSwitchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F0BF5B1C15CBBE0011EC14 /* MMPSwitchesViewController.m */; };
 		33F0BF5F1C15CBD60011EC14 /* MMPSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F0BF5E1C15CBD60011EC14 /* MMPSwitchTableViewCell.m */; };
 		33F3C0D41BEC8F13002671E9 /* MMPDeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C0D31BEC8F13002671E9 /* MMPDeviceTableViewCell.m */; };
@@ -108,6 +109,8 @@
 		33A42FDA1C15A70E007511E3 /* MMPSliderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPSliderDelegate.h; path = Controllers/MMPSliderDelegate.h; sourceTree = "<group>"; };
 		33D8FCD11BEB4B1800D68EC9 /* MMPButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPButtonTableViewCell.h; path = Controllers/MMPButtonTableViewCell.h; sourceTree = "<group>"; };
 		33D8FCD21BEB4B1800D68EC9 /* MMPButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPButtonTableViewCell.m; path = Controllers/MMPButtonTableViewCell.m; sourceTree = "<group>"; };
+		33E5015D1C182891002E8F93 /* MMPDeviceSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPDeviceSettingsViewController.h; path = Controllers/MMPDeviceSettingsViewController.h; sourceTree = "<group>"; };
+		33E5015E1C182891002E8F93 /* MMPDeviceSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPDeviceSettingsViewController.m; path = Controllers/MMPDeviceSettingsViewController.m; sourceTree = "<group>"; };
 		33F0BF5A1C15CBBE0011EC14 /* MMPSwitchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPSwitchesViewController.h; path = Controllers/MMPSwitchesViewController.h; sourceTree = "<group>"; };
 		33F0BF5B1C15CBBE0011EC14 /* MMPSwitchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPSwitchesViewController.m; path = Controllers/MMPSwitchesViewController.m; sourceTree = "<group>"; };
 		33F0BF5D1C15CBD60011EC14 /* MMPSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPSwitchTableViewCell.h; path = Controllers/MMPSwitchTableViewCell.h; sourceTree = "<group>"; };
@@ -148,6 +151,7 @@
 				33170BDC1C12CF58007D78A2 /* Watchdog */,
 				33170BE11C12D7CB007D78A2 /* Temp */,
 				33170BEB1C12E31F007D78A2 /* Pwm */,
+				33E5015C1C182862002E8F93 /* Settings */,
 			);
 			name = Tabs;
 			sourceTree = "<group>";
@@ -336,6 +340,15 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		33E5015C1C182862002E8F93 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				33E5015D1C182891002E8F93 /* MMPDeviceSettingsViewController.h */,
+				33E5015E1C182891002E8F93 /* MMPDeviceSettingsViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		33F0BF591C15CB980011EC14 /* Switch */ = {
 			isa = PBXGroup;
 			children = (
@@ -508,6 +521,7 @@
 				332C81431BD683A900C53AA4 /* main.m in Sources */,
 				337977B61BD93432007EB8E3 /* MMPControl+CoreDataProperties.m in Sources */,
 				33F3C0D41BEC8F13002671E9 /* MMPDeviceTableViewCell.m in Sources */,
+				33E5015F1C182891002E8F93 /* MMPDeviceSettingsViewController.m in Sources */,
 				335873131BFC5A85008C5353 /* MMPSetsViewController.m in Sources */,
 				33170BE41C12D7F7007D78A2 /* MMPTemperatureViewController.m in Sources */,
 				33170BE71C12D810007D78A2 /* MMPTemperatureTableViewCell.m in Sources */,

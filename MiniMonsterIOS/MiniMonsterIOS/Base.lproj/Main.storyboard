@@ -39,11 +39,48 @@
                     <connections>
                         <segue destination="N4y-n5-4Iw" kind="relationship" relationship="viewControllers" id="0dn-An-Oz9"/>
                         <segue destination="qvz-b0-S8B" kind="relationship" relationship="viewControllers" id="0n9-3M-S5m"/>
+                        <segue destination="awf-hd-Dpw" kind="relationship" relationship="viewControllers" id="PCk-Mz-3f4"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="90a-GL-32s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1750.5" y="-159.5"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="0TS-uj-aua">
+            <objects>
+                <viewController storyboardIdentifier="MMPInfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="awf-hd-Dpw" customClass="MMPInfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vlC-4C-kxN"/>
+                        <viewControllerLayoutGuide type="bottom" id="dKh-io-UyL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wlj-Iv-hsP">
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bB-e0-KkP">
+                                <rect key="frame" x="166" y="266" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="EEe-O7-kMM"/>
+                                    <constraint firstAttribute="width" constant="42" id="hIU-gv-gSN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2bB-e0-KkP" firstAttribute="centerY" secondItem="wlj-Iv-hsP" secondAttribute="centerY" id="7Ne-g5-y0L"/>
+                            <constraint firstItem="2bB-e0-KkP" firstAttribute="centerX" secondItem="wlj-Iv-hsP" secondAttribute="centerX" id="ekZ-q1-8MH"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="About" id="Z1t-wZ-UXK"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="prM-0s-WuC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1617.5" y="770.5"/>
         </scene>
         <!--Sets-->
         <scene sceneID="ez7-nl-vAI">
