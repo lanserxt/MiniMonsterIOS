@@ -8,6 +8,8 @@
 
 #import "MMPImageTableViewCell.h"
 
+NSString* const kMMPImageTableViewCellIdentifier = @"MMPImageTableViewCell";
+
 @implementation MMPImageTableViewCell
 
 @end

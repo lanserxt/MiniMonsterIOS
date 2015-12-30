@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33096F7C1C2A910C005A7102 /* MMPSetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33096F7B1C2A910C005A7102 /* MMPSetTableViewCell.m */; };
+		331707371C22B3DF00269156 /* MMPControlChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 331707361C22B3DF00269156 /* MMPControlChooserViewController.m */; };
 		33170BDB1C12CF4E007D78A2 /* MMPWatchdogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33170BDA1C12CF4E007D78A2 /* MMPWatchdogViewController.m */; };
 		33170BDF1C12CF84007D78A2 /* MMPWatchdogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33170BDE1C12CF84007D78A2 /* MMPWatchdogTableViewCell.m */; };
 		33170BE41C12D7F7007D78A2 /* MMPTemperatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33170BE31C12D7F7007D78A2 /* MMPTemperatureViewController.m */; };
@@ -25,6 +27,7 @@
 		332C816B1BD6866B00C53AA4 /* MMPObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 332C816A1BD6866B00C53AA4 /* MMPObjectFactory.m */; };
 		332E5FA01C047B3F00340B5B /* MMPDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 332E5F9F1C047B3F00340B5B /* MMPDeviceViewController.m */; };
 		33341BB51BE8D91400B860C5 /* MMPAddDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33341BB41BE8D91400B860C5 /* MMPAddDeviceViewController.m */; };
+		334683F61C1B5D3600509CD3 /* MMPAddSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334683F51C1B5D3600509CD3 /* MMPAddSetViewController.m */; };
 		335873131BFC5A85008C5353 /* MMPSetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335873121BFC5A85008C5353 /* MMPSetsViewController.m */; };
 		335873161BFC5C07008C5353 /* MMPMainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335873151BFC5C07008C5353 /* MMPMainTabViewController.m */; };
 		3358731B1BFC5D71008C5353 /* MMPSet+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 335873181BFC5D71008C5353 /* MMPSet+CoreDataProperties.m */; };
@@ -39,6 +42,8 @@
 		33A1798E1BE8E65700E0F40D /* MMPTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A1798D1BE8E65700E0F40D /* MMPTextFieldTableViewCell.m */; };
 		33D8FCD31BEB4B1800D68EC9 /* MMPButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D8FCD21BEB4B1800D68EC9 /* MMPButtonTableViewCell.m */; };
 		33E5015F1C182891002E8F93 /* MMPDeviceSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E5015E1C182891002E8F93 /* MMPDeviceSettingsViewController.m */; };
+		33EDFFDE1C18655400CFF009 /* MMPImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EDFFDD1C18655400CFF009 /* MMPImageTableViewCell.m */; };
+		33EDFFE11C18657000CFF009 /* MMPNumberTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EDFFE01C18657000CFF009 /* MMPNumberTableViewCell.m */; };
 		33F0BF5C1C15CBBE0011EC14 /* MMPSwitchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F0BF5B1C15CBBE0011EC14 /* MMPSwitchesViewController.m */; };
 		33F0BF5F1C15CBD60011EC14 /* MMPSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F0BF5E1C15CBD60011EC14 /* MMPSwitchTableViewCell.m */; };
 		33F3C0D41BEC8F13002671E9 /* MMPDeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F3C0D31BEC8F13002671E9 /* MMPDeviceTableViewCell.m */; };
@@ -47,6 +52,10 @@
 
 /* Begin PBXFileReference section */
 		26A90E67B30CD5719C719400 /* Pods-MiniMonsterIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniMonsterIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiniMonsterIOS/Pods-MiniMonsterIOS.release.xcconfig"; sourceTree = "<group>"; };
+		33096F7A1C2A910C005A7102 /* MMPSetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPSetTableViewCell.h; path = Controllers/MMPSetTableViewCell.h; sourceTree = "<group>"; };
+		33096F7B1C2A910C005A7102 /* MMPSetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPSetTableViewCell.m; path = Controllers/MMPSetTableViewCell.m; sourceTree = "<group>"; };
+		331707351C22B3DF00269156 /* MMPControlChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPControlChooserViewController.h; path = Controllers/MMPControlChooserViewController.h; sourceTree = "<group>"; };
+		331707361C22B3DF00269156 /* MMPControlChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPControlChooserViewController.m; path = Controllers/MMPControlChooserViewController.m; sourceTree = "<group>"; };
 		33170BD91C12CF4E007D78A2 /* MMPWatchdogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPWatchdogViewController.h; path = Controllers/MMPWatchdogViewController.h; sourceTree = "<group>"; };
 		33170BDA1C12CF4E007D78A2 /* MMPWatchdogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPWatchdogViewController.m; path = Controllers/MMPWatchdogViewController.m; sourceTree = "<group>"; };
 		33170BDD1C12CF84007D78A2 /* MMPWatchdogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPWatchdogTableViewCell.h; path = Controllers/MMPWatchdogTableViewCell.h; sourceTree = "<group>"; };
@@ -81,6 +90,9 @@
 		332E5F9F1C047B3F00340B5B /* MMPDeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPDeviceViewController.m; path = Controllers/MMPDeviceViewController.m; sourceTree = "<group>"; };
 		33341BB31BE8D91400B860C5 /* MMPAddDeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPAddDeviceViewController.h; path = Controllers/MMPAddDeviceViewController.h; sourceTree = "<group>"; };
 		33341BB41BE8D91400B860C5 /* MMPAddDeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPAddDeviceViewController.m; path = Controllers/MMPAddDeviceViewController.m; sourceTree = "<group>"; };
+		333717841C21B0EC00B701D4 /* MMPControlSelectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPControlSelectionDelegate.h; path = Controllers/MMPControlSelectionDelegate.h; sourceTree = "<group>"; };
+		334683F41C1B5D3600509CD3 /* MMPAddSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPAddSetViewController.h; path = Controllers/MMPAddSetViewController.h; sourceTree = "<group>"; };
+		334683F51C1B5D3600509CD3 /* MMPAddSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPAddSetViewController.m; path = Controllers/MMPAddSetViewController.m; sourceTree = "<group>"; };
 		335873111BFC5A85008C5353 /* MMPSetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPSetsViewController.h; path = Controllers/MMPSetsViewController.h; sourceTree = "<group>"; };
 		335873121BFC5A85008C5353 /* MMPSetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPSetsViewController.m; path = Controllers/MMPSetsViewController.m; sourceTree = "<group>"; };
 		335873141BFC5C07008C5353 /* MMPMainTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPMainTabViewController.h; path = Controllers/MMPMainTabViewController.h; sourceTree = "<group>"; };
@@ -111,6 +123,10 @@
 		33D8FCD21BEB4B1800D68EC9 /* MMPButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPButtonTableViewCell.m; path = Controllers/MMPButtonTableViewCell.m; sourceTree = "<group>"; };
 		33E5015D1C182891002E8F93 /* MMPDeviceSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPDeviceSettingsViewController.h; path = Controllers/MMPDeviceSettingsViewController.h; sourceTree = "<group>"; };
 		33E5015E1C182891002E8F93 /* MMPDeviceSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPDeviceSettingsViewController.m; path = Controllers/MMPDeviceSettingsViewController.m; sourceTree = "<group>"; };
+		33EDFFDC1C18655400CFF009 /* MMPImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPImageTableViewCell.h; path = Controllers/MMPImageTableViewCell.h; sourceTree = "<group>"; };
+		33EDFFDD1C18655400CFF009 /* MMPImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPImageTableViewCell.m; path = Controllers/MMPImageTableViewCell.m; sourceTree = "<group>"; };
+		33EDFFDF1C18657000CFF009 /* MMPNumberTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPNumberTableViewCell.h; path = Controllers/MMPNumberTableViewCell.h; sourceTree = "<group>"; };
+		33EDFFE01C18657000CFF009 /* MMPNumberTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPNumberTableViewCell.m; path = Controllers/MMPNumberTableViewCell.m; sourceTree = "<group>"; };
 		33F0BF5A1C15CBBE0011EC14 /* MMPSwitchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPSwitchesViewController.h; path = Controllers/MMPSwitchesViewController.h; sourceTree = "<group>"; };
 		33F0BF5B1C15CBBE0011EC14 /* MMPSwitchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPSwitchesViewController.m; path = Controllers/MMPSwitchesViewController.m; sourceTree = "<group>"; };
 		33F0BF5D1C15CBD60011EC14 /* MMPSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPSwitchTableViewCell.h; path = Controllers/MMPSwitchTableViewCell.h; sourceTree = "<group>"; };
@@ -134,6 +150,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33096F791C2A90DE005A7102 /* Add Set */ = {
+			isa = PBXGroup;
+			children = (
+				334683F41C1B5D3600509CD3 /* MMPAddSetViewController.h */,
+				334683F51C1B5D3600509CD3 /* MMPAddSetViewController.m */,
+				331707351C22B3DF00269156 /* MMPControlChooserViewController.h */,
+				331707361C22B3DF00269156 /* MMPControlChooserViewController.m */,
+				333717841C21B0EC00B701D4 /* MMPControlSelectionDelegate.h */,
+			);
+			name = "Add Set";
+			sourceTree = "<group>";
+		};
 		33170BDC1C12CF58007D78A2 /* Watchdog */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +179,7 @@
 				33170BDC1C12CF58007D78A2 /* Watchdog */,
 				33170BE11C12D7CB007D78A2 /* Temp */,
 				33170BEB1C12E31F007D78A2 /* Pwm */,
+				33F0BF591C15CB980011EC14 /* Switch */,
 				33E5015C1C182862002E8F93 /* Settings */,
 			);
 			name = Tabs;
@@ -304,6 +333,9 @@
 			children = (
 				335873111BFC5A85008C5353 /* MMPSetsViewController.h */,
 				335873121BFC5A85008C5353 /* MMPSetsViewController.m */,
+				33096F7A1C2A910C005A7102 /* MMPSetTableViewCell.h */,
+				33096F7B1C2A910C005A7102 /* MMPSetTableViewCell.m */,
+				33096F791C2A90DE005A7102 /* Add Set */,
 			);
 			name = Sets;
 			sourceTree = "<group>";
@@ -324,7 +356,6 @@
 				332E5F9E1C047B3F00340B5B /* MMPDeviceViewController.h */,
 				332E5F9F1C047B3F00340B5B /* MMPDeviceViewController.m */,
 				33170BE01C12D7BC007D78A2 /* Tabs */,
-				33F0BF591C15CB980011EC14 /* Switch */,
 			);
 			name = Device;
 			sourceTree = "<group>";
@@ -345,6 +376,10 @@
 			children = (
 				33E5015D1C182891002E8F93 /* MMPDeviceSettingsViewController.h */,
 				33E5015E1C182891002E8F93 /* MMPDeviceSettingsViewController.m */,
+				33EDFFDC1C18655400CFF009 /* MMPImageTableViewCell.h */,
+				33EDFFDD1C18655400CFF009 /* MMPImageTableViewCell.m */,
+				33EDFFDF1C18657000CFF009 /* MMPNumberTableViewCell.h */,
+				33EDFFE01C18657000CFF009 /* MMPNumberTableViewCell.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -510,12 +545,16 @@
 				33170BEE1C12E35C007D78A2 /* MMPPowerViewController.m in Sources */,
 				33170BDB1C12CF4E007D78A2 /* MMPWatchdogViewController.m in Sources */,
 				332E5FA01C047B3F00340B5B /* MMPDeviceViewController.m in Sources */,
+				331707371C22B3DF00269156 /* MMPControlChooserViewController.m in Sources */,
 				3358731B1BFC5D71008C5353 /* MMPSet+CoreDataProperties.m in Sources */,
 				33170BDF1C12CF84007D78A2 /* MMPWatchdogTableViewCell.m in Sources */,
 				337977B71BD93432007EB8E3 /* MMPControl.m in Sources */,
 				33341BB51BE8D91400B860C5 /* MMPAddDeviceViewController.m in Sources */,
+				33096F7C1C2A910C005A7102 /* MMPSetTableViewCell.m in Sources */,
+				334683F61C1B5D3600509CD3 /* MMPAddSetViewController.m in Sources */,
 				332C81461BD683A900C53AA4 /* AppDelegate.m in Sources */,
 				332C81651BD685D300C53AA4 /* MMPDevicesViewController.m in Sources */,
+				33EDFFDE1C18655400CFF009 /* MMPImageTableViewCell.m in Sources */,
 				337977B51BD93432007EB8E3 /* MMPDevice.m in Sources */,
 				33D8FCD31BEB4B1800D68EC9 /* MMPButtonTableViewCell.m in Sources */,
 				332C81431BD683A900C53AA4 /* main.m in Sources */,
@@ -533,6 +572,7 @@
 				332C816B1BD6866B00C53AA4 /* MMPObjectFactory.m in Sources */,
 				337977B41BD93432007EB8E3 /* MMPDevice+CoreDataProperties.m in Sources */,
 				336A4C181C16BB6C0087FB60 /* MMPDevicesUtils.m in Sources */,
+				33EDFFE11C18657000CFF009 /* MMPNumberTableViewCell.m in Sources */,
 				332C81611BD685BC00C53AA4 /* MMPInfoViewController.m in Sources */,
 				335873161BFC5C07008C5353 /* MMPMainTabViewController.m in Sources */,
 			);

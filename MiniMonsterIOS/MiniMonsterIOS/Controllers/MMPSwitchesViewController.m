@@ -28,7 +28,7 @@
 - (void) viewWillAppear: (BOOL) animated
 {
     [super viewWillAppear: animated];
-    self.title = @"Ports";
+    [self.tabBarController.navigationItem setTitle: @"Ports"];;
     [self updateControls];
     [self.tabBarController.navigationItem setRightBarButtonItem: [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemEdit
                                                                                               target: self
@@ -45,7 +45,7 @@
 {
     _switchesData = [MMPControl MR_findAllSortedBy: @"portNumber"
                                           ascending: YES
-                                      withPredicate: [NSPredicate predicateWithFormat: @"deviceId == %@ AND type = %@", self.selectedDevice.deviceId, @(MMPControlTypeSwitch)]
+                                      withPredicate: [NSPredicate predicateWithFormat: @"deviceId matches[c] %@ AND type = %@ AND setId == nil", self.selectedDevice.deviceId, @(MMPControlTypeSwitch)]
                                          inContext: [NSManagedObjectContext MR_defaultContext]];
 }
 
@@ -97,7 +97,7 @@ titleForHeaderInSection: (NSInteger) section
                          maskType: SVProgressHUDMaskTypeBlack];
     MMPControl *control = (MMPControl*)_switchesData[portNumber];
     
-    NSString *url = [NSString stringWithFormat: @"%@:%@/%@/?sw=%ld-%@", self.selectedDevice.host, self.selectedDevice.port, self.selectedDevice.password, (long)portNumber +1, value ? @"1" : @"0"];
+    NSString *url = [NSString stringWithFormat: @"%@:%@/%@/?sw=%ld-%@", self.selectedDevice.host, self.selectedDevice.port, self.selectedDevice.password, (long)portNumber + 1, value ? @"1" : @"0"];
     NSLog(@"Switching %@", url);
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager setResponseSerializer: [AFHTTPResponseSerializer serializer]];

@@ -18,6 +18,9 @@ extern const CGFloat kMMPDeviceTableViewCellHeight;
 @property (nonatomic, weak) IBOutlet UIView *statusCircle;
 @property (nonatomic, weak) IBOutlet UILabel *statusLabel;
 @property (nonatomic, weak) IBOutlet UILabel *firmLabel;
+@property (nonatomic, weak) IBOutlet UILabel *nameLabel;
+@property (nonatomic, weak) IBOutlet UILabel *updateLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *thumbImageView;
 
 - (void) setDataForDevice: (MMPDevice*) device;
 

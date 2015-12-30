@@ -8,6 +8,8 @@
 
 #import "MMPNumberTableViewCell.h"
 
+NSString* const kMMPNumberTableViewCellIdentifier = @"MMPNumberTableViewCell";
+
 @implementation MMPNumberTableViewCell
 
 @end

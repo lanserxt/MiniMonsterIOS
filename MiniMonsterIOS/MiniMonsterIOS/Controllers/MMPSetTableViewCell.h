@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+extern NSString* const kMMPSetTableViewCellIdentifier;
+extern const CGFloat kMMPSetTableViewCellHeight;
+
+@class MMPSet;
 
 @interface MMPSetTableViewCell : UITableViewCell
+
+@property (nonatomic, weak) IBOutlet UILabel *setNameLabel;
+
+- (void) setDataForSet: (MMPSet*) set;
 
 @end

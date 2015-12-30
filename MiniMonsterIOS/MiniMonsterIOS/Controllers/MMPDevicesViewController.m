@@ -36,13 +36,14 @@
 - (void) viewWillAppear: (BOOL) animated
 {
     [super viewWillAppear: animated];
-    self.title = @"Devices";
+    [self.tabBarController.navigationItem setTitle: @"Devices"];
     [self loadDevices];
     
     self.tabBarController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemEdit target:self action:@selector(editAction:)];
     self.tabBarController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemAdd target:self action:@selector(addAction)];
     [[MMPDevicesUtils sharedUtils] setDelegate: self];
     [[MMPDevicesUtils sharedUtils] updateDevices];
+    [self.tableView reloadData];
 }
 
 - (void) loadDevices
@@ -54,8 +55,6 @@
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear: animated];
-    
-    [[MMPDevicesUtils sharedUtils] setDelegate: nil];
 }
 
 #pragma mark - TableView Data Source

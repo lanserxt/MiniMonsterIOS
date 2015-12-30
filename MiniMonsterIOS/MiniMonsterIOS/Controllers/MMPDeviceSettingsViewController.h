@@ -10,4 +10,6 @@
 
 @interface MMPDeviceSettingsViewController : MMPDeviceDataViewController
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomTableConstraint;
+
 @end

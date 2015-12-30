@@ -17,8 +17,22 @@ const CGFloat kMMPTextFieldTableViewCellHeight = 44.0f;
 
 - (void) textFieldDidBeginEditing: (UITextField *) textField
 {
-    
+    if(self.delegate && [self.delegate respondsToSelector: @selector(textFieldEditingStarted:forCell:)])
+    {
+        [self.delegate textFieldEditingStarted: textField
+                                       forCell: self];
+    }
 }
+
+- (void) textFieldDidEndEditing: (UITextField *) textField
+{
+    if(self.delegate && [self.delegate respondsToSelector: @selector(textFieldEditingEnded:forCell:)])
+    {
+        [self.delegate textFieldEditingEnded: textField
+                                     forCell: self];
+    }
+}
+
 
 - (BOOL) textFieldShouldReturn: (UITextField *) textField
 {

@@ -10,11 +10,23 @@
 //
 
 #import "MMPSet+CoreDataProperties.h"
+#import <MagicalRecord.h>
 
 @implementation MMPSet (CoreDataProperties)
 
 @dynamic setId;
 @dynamic name;
 @dynamic addedDate;
+
+#pragma mark - Init
+
++ (instancetype) setWithName: (NSString*) name
+{
+    MMPSet *set = [MMPSet MR_createEntityInContext: [NSManagedObjectContext MR_defaultContext]];
+    set.setId = [[NSUUID UUID] UUIDString];
+    set.name = name;
+    set.addedDate = [NSDate date];
+    return set;
+}
 
 @end

@@ -17,6 +17,8 @@ extern const CGFloat kMMPSliderTableViewCellHeight;
 @property (nonatomic, weak) IBOutlet UISlider *powerSlider;
 @property (nonatomic, weak) IBOutlet UITextField *powerValueField;
 @property (nonatomic, weak) IBOutlet UIButton *powerSetButton;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *buttonWidthConstraint;
+
 @property (nonatomic, weak) id<MMPSliderDelegate> delegate;
 
 - (void) setSavedData: (CGFloat) savedData;

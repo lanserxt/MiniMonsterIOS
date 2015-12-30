@@ -13,7 +13,7 @@
 #import <AFNetworking.h>
 #import "MMPDevicesUtils.h"
 
-@interface MMPDeviceDataViewController : UIViewController
+@interface MMPDeviceDataViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) MMPDevice *selectedDevice;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;

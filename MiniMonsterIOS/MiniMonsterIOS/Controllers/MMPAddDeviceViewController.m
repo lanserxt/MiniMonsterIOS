@@ -37,6 +37,7 @@ typedef NS_ENUM(NSInteger, MMPDeviceInfoCell)
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) BOOL isValidatedDevice;
 @property (nonatomic) NSDictionary *deviceData;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomTableConstraint;
 @end
 
 @implementation MMPAddDeviceViewController
@@ -51,13 +52,31 @@ typedef NS_ENUM(NSInteger, MMPDeviceInfoCell)
     return vc;
 }
 
-
 #pragma mark - View Lyfecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.title = @"Add Device";
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(keyboardWillShow:)
+                                                 name: UIKeyboardDidShowNotification
+                                               object: nil];
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(keyboardWillHide:)
+                                                 name: UIKeyboardDidHideNotification
+                                               object: nil];
+}
+
+- (void)keyboardWillShow: (NSNotification *) notification
+{
+    NSLog(@"%f", [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height);
+    [self.bottomTableConstraint setConstant: [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height - 50.0f];
+}
+
+- (void)keyboardWillHide: (NSNotification *) notification
+{
+    [self.bottomTableConstraint setConstant: 0.0f];
 }
 
 #pragma mark - TableView Data Source
@@ -208,7 +227,7 @@ heightForRowAtIndexPath: (NSIndexPath *) indexPath
         MMPControl *control = [MMPControl controlWithDeviceId: addedDevice.deviceId
                                                       andType: MMPControlTypeSwitch];
         control.data = [_deviceData[kPorts][portIndex] stringValue];
-        control.name = [NSString stringWithFormat: @"Port %ld", (long)portIndex];
+        control.name = [NSString stringWithFormat: @"Port %ld", (long)portIndex +1];
         control.portNumber = @(portIndex);
         control.isOutState = @([_deviceData[kPortsState][portIndex] boolValue]);
     }
@@ -219,6 +238,7 @@ heightForRowAtIndexPath: (NSIndexPath *) indexPath
                                                       andType: MMPControlTypeSlider];
         control.data = [_deviceData[sliderIndex == 0 ? kSlider1 : kSlider2] stringValue];
         control.maxValue = _deviceData[kSliderMax];
+        control.name = [NSString stringWithFormat: sliderIndex == 0 ? @"PWM 1" : @"PWM 2"];
         control.portNumber = @(sliderIndex);
     }
     
@@ -227,7 +247,7 @@ heightForRowAtIndexPath: (NSIndexPath *) indexPath
         MMPControl *control = [MMPControl controlWithDeviceId: addedDevice.deviceId
                                                       andType: MMPControlTypeTemperature];
         control.data = ![_deviceData[kTemperature][tempIndex] isKindOfClass: [NSString class]] ? [_deviceData[kTemperature][tempIndex] stringValue] : _deviceData[kTemperature][tempIndex];
-        control.name = [NSString stringWithFormat: @"Port %ld", (long)tempIndex];
+        control.name = [NSString stringWithFormat: @"Port %ld", (long)tempIndex+1];
         control.portNumber = @(tempIndex);
     }
     for (NSInteger watchIndex = 0; watchIndex < [_deviceData[kWatchDog] count] ; watchIndex++)
@@ -235,7 +255,7 @@ heightForRowAtIndexPath: (NSIndexPath *) indexPath
         MMPControl *control = [MMPControl controlWithDeviceId: addedDevice.deviceId
                                                       andType: MMPControlTypeWatchdog];
         control.data = [_deviceData[kWatchDog][watchIndex] stringValue];
-        control.name = [NSString stringWithFormat: @"Port %ld", (long)watchIndex];
+        control.name = [NSString stringWithFormat: @"Port %ld", (long)watchIndex+1];
         control.portNumber = @(watchIndex);
     }
     

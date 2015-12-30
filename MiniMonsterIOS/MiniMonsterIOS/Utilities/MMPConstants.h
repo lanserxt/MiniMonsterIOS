@@ -26,3 +26,6 @@
 #define kTemperature @"t"
 #define kWatchDog @"wdr"
 #define kNoData @"n"
+
+#define kHomePage @"http://mini-monster.ru"
+#define kShopPage @"https://shop.mini-monster.ru"

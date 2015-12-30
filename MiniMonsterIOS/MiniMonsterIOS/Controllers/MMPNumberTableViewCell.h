@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString* const kMMPNumberTableViewCellIdentifier;
+
 @interface MMPNumberTableViewCell : UITableViewCell
+
+@property (nonatomic, weak) IBOutlet UILabel *numberLabel;
+@property (nonatomic, weak) IBOutlet UILabel *numberValueLabel;
 
 @end

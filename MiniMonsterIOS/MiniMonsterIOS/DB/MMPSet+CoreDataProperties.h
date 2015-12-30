@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MMPSet (CoreDataProperties)
 
++ (instancetype) setWithName: (NSString*) name;
+
 @property (nullable, nonatomic, retain) NSString *setId;
 @property (nullable, nonatomic, retain) NSString *name;
 @property (nullable, nonatomic, retain) NSDate *addedDate;

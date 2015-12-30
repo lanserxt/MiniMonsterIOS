@@ -109,7 +109,7 @@
 
 - (void) refreshDevice: (MMPDevice*) device
 {
-    if (![self isUpdatingDevice: device.deviceId])
+    if (![self isUpdatingDevice: device.deviceId] && device.deviceId)
     {
         [self.devicesIdList addObject: device.deviceId];
     }
@@ -204,25 +204,37 @@
         
         for (NSInteger portIndex = 0; portIndex < [dict[kPorts] count]; portIndex++)
         {
-            MMPControl *control = [MMPControl MR_findFirstWithPredicate: [NSPredicate predicateWithFormat: @"deviceId = %@ AND type = %@ AND portNumber == %@", device.deviceId, @(MMPControlTypeSwitch), @(portIndex)] inContext: localContext];
-            control.data = [dict[kPorts][portIndex] stringValue];
+            NSArray *controls = [MMPControl MR_findAllWithPredicate: [NSPredicate predicateWithFormat: @"deviceId = %@ AND type = %@ AND portNumber == %@", device.deviceId, @(MMPControlTypeSwitch), @(portIndex)] inContext: localContext];
+            for (MMPControl *control  in controls)
+            {                
+                control.data = [dict[kPorts][portIndex] stringValue];
+            }
         }
         
         for (NSInteger sliderIndex = 0; sliderIndex < 2 ; sliderIndex++)
         {
-            MMPControl *control = [MMPControl MR_findFirstWithPredicate: [NSPredicate predicateWithFormat: @"deviceId = %@ AND type = %@ AND portNumber == %@", device.deviceId, @(MMPControlTypeSlider), @(sliderIndex)] inContext: localContext];
-            control.data = [dict[sliderIndex == 0 ? kSlider1 : kSlider2] stringValue];
+            NSArray *controls = [MMPControl MR_findAllWithPredicate: [NSPredicate predicateWithFormat: @"deviceId = %@ AND type = %@ AND portNumber == %@", device.deviceId, @(MMPControlTypeSwitch), @(sliderIndex)] inContext: localContext];
+            for (MMPControl *control  in controls)
+            {
+                control.data = [dict[sliderIndex == 0 ? kSlider1 : kSlider2] stringValue];
+            }
         }
         
         for (NSInteger tempIndex = 0; tempIndex < [dict[kTemperature] count] ; tempIndex++)
         {
-            MMPControl *control = [MMPControl MR_findFirstWithPredicate: [NSPredicate predicateWithFormat: @"deviceId = %@ AND type = %@ AND portNumber == %@", device.deviceId, @(MMPControlTypeTemperature), @(tempIndex)] inContext: localContext];
-            control.data = ![dict[kTemperature][tempIndex] isKindOfClass: [NSString class]] ? [dict[kTemperature][tempIndex] stringValue] : dict[kTemperature][tempIndex];
+            NSArray *controls = [MMPControl MR_findAllWithPredicate: [NSPredicate predicateWithFormat: @"deviceId = %@ AND type = %@ AND portNumber == %@", device.deviceId, @(MMPControlTypeSwitch), @(tempIndex)] inContext: localContext];
+            for (MMPControl *control  in controls)
+            {
+                control.data = ![dict[kTemperature][tempIndex] isKindOfClass: [NSString class]] ? [dict[kTemperature][tempIndex] stringValue] : dict[kTemperature][tempIndex];
+            }
         }
         for (NSInteger watchIndex = 0; watchIndex < [dict[kWatchDog] count] ; watchIndex++)
         {
-            MMPControl *control = [MMPControl MR_findFirstWithPredicate: [NSPredicate predicateWithFormat: @"deviceId = %@ AND type = %@ AND portNumber == %@", device.deviceId, @(MMPControlTypeWatchdog), @(watchIndex)] inContext: localContext];
-            control.data = [dict[kWatchDog][watchIndex] stringValue];
+            NSArray *controls = [MMPControl MR_findAllWithPredicate: [NSPredicate predicateWithFormat: @"deviceId = %@ AND type = %@ AND portNumber == %@", device.deviceId, @(MMPControlTypeSwitch), @(watchIndex)] inContext: localContext];
+            for (MMPControl *control  in controls)
+            {
+                control.data = [dict[kWatchDog][watchIndex] stringValue];
+            }
         }
     } completion:^(BOOL contextDidSave, NSError *error) {
         if (self.delegate && [self.delegate respondsToSelector: @selector(deviceIsUpdated:)])

@@ -7,7 +7,18 @@
 //
 
 #import "MMPSetTableViewCell.h"
+#import "MMPSet+CoreDataProperties.h"
+
+NSString* const kMMPSetTableViewCellIdentifier = @"MMPSetTableViewCell";
+const CGFloat kMMPSetTableViewCellHeight = 70.0f;
 
 @implementation MMPSetTableViewCell
+
+#pragma mark - Methods
+
+- (void) setDataForSet: (MMPSet*) set
+{
+    [self.setNameLabel setText: set.name];
+}
 
 @end

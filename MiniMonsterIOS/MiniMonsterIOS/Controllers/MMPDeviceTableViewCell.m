@@ -36,6 +36,14 @@ const CGFloat kMMPDeviceTableViewCellHeight = 150.0f;
         [self.statusCircle setBackgroundColor: [device.isOnline boolValue] ? [UIColor greenColor] : [UIColor redColor]];
         [self.statusLabel setText: [device.isOnline boolValue] ? @"Online" : @"Offline"];
     }
+    
+    [self.thumbImageView setImage: [UIImage imageWithData: device.thumb]];
+    [self.nameLabel setText: device.localName];
+    
+    NSDateFormatter *dateFormat = [NSDateFormatter new];
+    [dateFormat setDateStyle: NSDateFormatterShortStyle];
+    [dateFormat setTimeStyle: NSDateFormatterShortStyle];
+    [self.updateLabel setText: [NSString stringWithFormat: @"Updated: %@", [dateFormat stringFromDate: device.latestUpdate]]];
 }
 
 @end

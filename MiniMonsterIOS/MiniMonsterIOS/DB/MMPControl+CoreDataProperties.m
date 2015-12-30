@@ -38,4 +38,23 @@
     return control;
 }
 
+- (instancetype) controlCopyForSet: (NSString*) setId
+{
+    MMPControl *control = [MMPControl MR_createEntityInContext: [NSManagedObjectContext MR_defaultContext]];
+    
+    control.controlId = self.controlId;
+    control.deviceId = [self.deviceId copy];
+    control.type = self.type;
+    control.data = self.data;
+    control.interval = self.interval;
+    control.maxValue = self.maxValue;
+    control.request = self.request;
+    control.setId = setId;
+    control.name = self.name;
+    control.portNumber = self.portNumber;
+    control.isOutState = self.isOutState;
+    
+    return control;
+}
+
 @end

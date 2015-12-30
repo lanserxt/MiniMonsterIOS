@@ -14,4 +14,7 @@ pod 'UIAlertView+Blocks'
 pod 'Fabric'
 pod 'Crashlytics'
 pod 'UITextView+Placeholder'
+pod 'BDGImagePicker'
+pod 'MMPickerView'
+
 end

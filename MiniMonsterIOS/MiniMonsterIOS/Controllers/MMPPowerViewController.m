@@ -29,7 +29,7 @@
 - (void) viewWillAppear: (BOOL) animated
 {
     [super viewWillAppear: animated];
-    self.title = @"PWM";
+    [self.tabBarController.navigationItem setTitle: @"PWM"];
     [self updateControls];
     [self.tabBarController.navigationItem setRightBarButtonItem: nil];
 }
@@ -44,7 +44,7 @@
 {
     _slidersData = [MMPControl MR_findAllSortedBy: @"name"
                                          ascending: YES
-                                     withPredicate: [NSPredicate predicateWithFormat: @"deviceId == %@ AND type = %@", self.selectedDevice.deviceId, @(MMPControlTypeSlider)]];
+                                     withPredicate: [NSPredicate predicateWithFormat: @"deviceId matches[c] %@ AND type = %@ AND setId == nil", self.selectedDevice.deviceId, @(MMPControlTypeSlider)]];
 }
 
 #pragma mark - TableView Data Source
@@ -94,7 +94,7 @@ titleForHeaderInSection: (NSInteger) section
     [SVProgressHUD showWithStatus: @"Setting pwm..."
                          maskType: SVProgressHUDMaskTypeBlack];
     MMPControl *control = (MMPControl*)_slidersData[portNumber];
-    NSString *url = [NSString stringWithFormat: @"%@:%@/%@/?cpw%ld=%.0f", self.selectedDevice.host, self.selectedDevice.port, self.selectedDevice.password, (long)portNumber, value];
+    NSString *url = [NSString stringWithFormat: @"%@:%@/%@/?cpw%ld=%.0f", self.selectedDevice.host, self.selectedDevice.port, self.selectedDevice.password, (long)portNumber + 1, value];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager setResponseSerializer: [AFHTTPResponseSerializer serializer]];
     [manager GET:url

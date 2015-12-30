@@ -1,5 +1,5 @@
 //
-//  MMPAddSetControlViewController.h
+//  MMPAddSetViewController.h
 //  MiniMonsterIOS
 //
 //  Created by Anton Gubarenko on 11.12.15.
@@ -7,7 +7,12 @@
 //
 
 #import "MMPBaseViewController.h"
+@class MMPSet;
 
-@interface MMPAddSetControlViewController : MMPBaseViewController
+@interface MMPAddSetViewController : MMPBaseViewController
+
++ (instancetype) classObject;
+
+@property (nonatomic) MMPSet *selectedSet;
 
 @end

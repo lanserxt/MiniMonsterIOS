@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString* const kMMPImageTableViewCellIdentifier;
+
 @interface MMPImageTableViewCell : UITableViewCell
+
+@property (nonatomic, weak) IBOutlet UIImageView *thumbImageView;
+@property (nonatomic, weak) IBOutlet UILabel *thumbTitle;
 
 @end

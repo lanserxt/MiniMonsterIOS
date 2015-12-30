@@ -25,8 +25,8 @@
 
 - (void) viewWillAppear: (BOOL) animated
 {
-    [super viewWillAppear: animated];
-    self.title = @"W-Dog";
+    [super viewWillAppear: animated];    
+    [self.tabBarController.navigationItem setTitle: @"W-Dog"];
     [self.tabBarController.navigationItem setRightBarButtonItem: nil];
     [self updateControls];
 }
@@ -41,7 +41,7 @@
 {
     _watchDogs = [MMPControl MR_findAllSortedBy: @"name"
                                        ascending: YES
-                                   withPredicate: [NSPredicate predicateWithFormat: @"deviceId == %@ AND type = %@", self.selectedDevice.deviceId, @(MMPControlTypeWatchdog)]];
+                                   withPredicate: [NSPredicate predicateWithFormat: @"deviceId matches[c] %@ AND type = %@ AND setId == nil", self.selectedDevice.deviceId, @(MMPControlTypeWatchdog)]];
 }
 
 #pragma mark - TableView Data Source

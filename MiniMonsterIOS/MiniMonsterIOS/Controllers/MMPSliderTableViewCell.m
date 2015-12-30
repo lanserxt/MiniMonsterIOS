@@ -10,6 +10,7 @@
 
 NSString* const kMMPSliderTableViewCellIdentifier = @"MMPSliderTableViewCell";
 const CGFloat kMMPSliderTableViewCellHeight = 150.0f;
+static const CGFloat kButtonWidth = 94.0f;
 
 @interface MMPSliderTableViewCell () <UITextFieldDelegate>
 
@@ -41,14 +42,23 @@ const CGFloat kMMPSliderTableViewCellHeight = 150.0f;
                        forControlEvents: UIControlEventTouchUpInside];
     }
     
+    [self checkButton];
+}
+
+- (void) checkButton
+{
     if (![self.powerValueField.text isEqualToString: [NSString stringWithFormat: @"%.0f", self.savedData]] || fabs(floor(self.powerSlider.value) - self.savedData) > 1.0 )
     {
-        [self.powerSetButton setHidden: NO];
+        [self.buttonWidthConstraint setConstant: kButtonWidth];
     }
     else
     {
-        [self.powerSetButton setHidden: YES];
+        [self.buttonWidthConstraint setConstant: 0.0f];
     }
+    [UIView animateWithDuration: 0.3 animations:^{
+        
+        [self layoutIfNeeded];
+    }];
     
 }
 
@@ -61,14 +71,7 @@ const CGFloat kMMPSliderTableViewCellHeight = 150.0f;
 
 - (void) sliderValuechanged: (UISlider*) slider
 {
-    if (![self.powerValueField.text isEqualToString: [NSString stringWithFormat: @"%.0f", self.savedData]] || fabs(floor(self.powerSlider.value) - self.savedData) > 1.0 )
-    {
-        [self.powerSetButton setHidden: NO];
-    }
-    else
-    {
-        [self.powerSetButton setHidden: YES];
-    }
+    [self checkButton];
     [self.powerValueField setText: [NSString stringWithFormat: @"%.0f", slider.value]];
 }
 

@@ -6,8 +6,12 @@
 //  Copyright © 2015 Anton Gubarenko. All rights reserved.
 //
 
-#ifndef MMPControlSelectionDelegate_h
-#define MMPControlSelectionDelegate_h
+#import <UIKit/UIKit.h>
 
+@class MMPControl;
 
-#endif /* MMPControlSelectionDelegate_h */
+@protocol MMPControlSelectionDelegate <NSObject>
+
+- (void) controlSelectionDone;
+
+@end

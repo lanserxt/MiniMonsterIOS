@@ -30,7 +30,7 @@
 - (void) viewWillAppear: (BOOL) animated
 {
     [super viewWillAppear: animated];
-    self.title = @"t°C";
+    [self.tabBarController.navigationItem setTitle: @"t°C"];
     [self updateControls];
     [self.tabBarController.navigationItem setRightBarButtonItem: nil];
 }
@@ -45,7 +45,7 @@
 {
     _tempPorts = [MMPControl MR_findAllSortedBy: @"name"
                                        ascending: YES
-                                   withPredicate: [NSPredicate predicateWithFormat: @"deviceId == %@ AND type = %@", self.selectedDevice.deviceId, @(MMPControlTypeTemperature)]];
+                                   withPredicate: [NSPredicate predicateWithFormat: @"deviceId matches[c] %@ AND type = %@ AND setId == nil", self.selectedDevice.deviceId, @(MMPControlTypeTemperature)]];
 }
 
 #pragma mark - TableView Data Source
@@ -75,6 +75,12 @@ heightForRowAtIndexPath: (NSIndexPath *) indexPath
 titleForHeaderInSection: (NSInteger) section
 {
     return @"Tap to change temperature";
+}
+
+- (NSString*) tableView: (UITableView *) tableView
+titleForFooterInSection:(NSInteger)section
+{
+    return @"Temp set will work only if thermostat is enabled in web interface";
 }
 
 - (void) tableView: (UITableView *) tableView

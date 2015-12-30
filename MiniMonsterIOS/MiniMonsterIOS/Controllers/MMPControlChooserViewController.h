@@ -8,6 +8,14 @@
 
 #import "MMPBaseViewController.h"
 
+@protocol MMPControlSelectionDelegate;
+
 @interface MMPControlChooserViewController : MMPBaseViewController
+
++ (instancetype) classObject;
+
+@property (nonatomic) NSString *selectedSetId;
+@property (nonatomic) NSArray *setControlIDs;
+@property (nonatomic, weak) id<MMPControlSelectionDelegate> delegate;
 
 @end

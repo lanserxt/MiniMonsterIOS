@@ -26,6 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype) controlWithDeviceId: (NSString*) deviceId
                              andType: (MMPControlType) type;
 
+- (instancetype) controlCopyForSet: (NSString*) setId;
+
 @property (nullable, nonatomic, retain) NSString *controlId;
 @property (nullable, nonatomic, retain) NSString *data;
 @property (nullable, nonatomic, retain) NSString *deviceId;

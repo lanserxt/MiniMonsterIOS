@@ -22,7 +22,11 @@ extern const CGFloat kMMPTextFieldTableViewCellHeight;
 
 @protocol MMPTextFieldDelegate <NSObject>
 
+@optional
 - (void) textFieldEditingStarted: (UITextField*) textField
+                         forCell: (MMPTextFieldTableViewCell*) cell;
+
+- (void) textFieldEditingEnded: (UITextField*) textField
                          forCell: (MMPTextFieldTableViewCell*) cell;
 
 @end
